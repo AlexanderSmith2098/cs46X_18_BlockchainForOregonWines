@@ -57,7 +57,7 @@
 							&times;
 						</button>
 						<div class="text-center">
-							<h4 class="modal-title">QRCODE YOOO!!</h4>
+							<h4 class="modal-title">QR Code:</h4>
 						</div>
 					</div>
 					<div class="modal-body">
@@ -70,15 +70,15 @@
 		<script>
 			var qrcString;
 			var qrcode = new QRCode(document.getElementById("output"), {
-				width: 100,
-				height: 100,
+				width: 25,
+				height: 25,
 				useSVG: true,
 			});
 			document
 				.getElementById("qrCodeButt")
 				.addEventListener("click", function () {
 					event.preventDefault();
-                    qrcString = $("#grapes").val() + "\n" + $("#winery").val() + "\n" + $("#wineName").val();
+                    qrcString = "Grapes: " + $("#grapes").val() + "\n" + "Winery: " + $("#winery").val() + "\n" + "Wine Name: "  + $("#wineName").val();
                     console.log(qrcString);
                     //qrcode.makeCode("https://www.cnn.com");
                     qrcode.makeCode(qrcString);
