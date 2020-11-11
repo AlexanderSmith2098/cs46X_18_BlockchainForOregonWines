@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Scan your QR Code</title>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="html5-qrcode.min.js"></script>
+	</head>
+	<body>
+		<div id="qr-reader" style="width: 500px"></div>
+		<div id="qr-reader-results"></div>
+		<div class="modal fade" id="qrReaderModal" tabindex="0">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header modal-primary">
+						<button type="button" class="close" data-dismiss="modal">
+							&times;
+						</button>
+						<div class="text-center">
+							<h4 class="modal-title">Wine Information:</h4>
+						</div>
+					</div>
+					<div class="modal-body">
+						<div class="demo-container">
+							<div class="demo-box">Demonstration Box</div>
+						</div>
+					</div>
+					<img src="" alt="" />
+				</div>
+			</div>
+		</div>
+
+		<script>
+			var resultContainer = document.getElementById("qr-reader-results");
+			var lastResult,
+				countResults = 0;
+
+			function onScanSuccess(qrCodeMessage) {
+				if (qrCodeMessage !== lastResult) {
+					++countResults;
+					lastResult = qrCodeMessage;
+					resultContainer.innerHTML += `<div>[${countResults}] - ${qrCodeMessage}</div>`;
+					qrCodeMessage = qrCodeMessage.replace(/\n/g, "<br />");
+					/*var wineInfo = document.createElement("p");
+					var node = document.createTextNode(qrCodeMessage);
+					wineInfo.appendChild(node);
+					var element = document.getElementById("output");
+					element.appendChild(wineInfo);*/
+					$("div.demo-container").html("<p>" + qrCodeMessage + "</p>");
+					$("#qrReaderModal").modal();
+				}
+			}
+
+			var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", {
+				fps: 10,
+				qrbox: 250,
+			});
+			html5QrcodeScanner.render(onScanSuccess);
+		</script>
+	</body>
+</html>
