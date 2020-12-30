@@ -1,0 +1,26 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><%= winebatch.bName%></h5>
+                <p class="card-text"><%= winebatch.comments%></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Grape Type: </b><%= winebatch.grapes%></li>
+                <li class="list-group-item"><b>Number of Bottles: </b><%= winebatch.numBottles%></li>
+                <li class="list-group-item"><b>Location (Origin) of Grapes: </b><%= winebatch.gLocation%></li>
+                <li class="list-group-item"><b>Barrel Type: </b><%= winebatch.barrel%></li>
+            </ul>
+            <div class="card-body">
+                <a class="card-link btn btn-info" href="/winebatches/<%= winebatch._id %>/edit">Edit</a>
+                <form class="d-inline" action="/winebatches/<%= winebatch._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+            <div class="card-footer text-muted">
+                Date Created: 12/20/20
+            </div>
+        </div>
+    </div>
+</div>

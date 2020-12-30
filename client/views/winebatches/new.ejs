@@ -1,0 +1,40 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+    <h1 class="text-center">New Wine Batch</h1>
+    <div class="col-6 offset-3">
+        <form action="/winebatches" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+                <label class="form-label" for="bName">Batch Name</label>
+                <input class="form-control" type="text" id="bName" name="winebatch[bName]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="grapes">Grape Type</label>
+                <input class="form-control" type="text" id="grapes" name="winebatch[grapes]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" fnumBottles">Number of Bottles</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="numBottles-label">#</span>
+                    <input type="text" class="form-control" id="numBottles" placeholder="0" aria-label="numBottles"
+                        aria-describedby="numBottles-label" name="winebatch[numBottles]" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="gLocation">Location (Origin) of Grapes</label>
+                <input class="form-control" type="text" id="gLocation" name="winebatch[gLocation]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="barrel">Barrel Type</label>
+                <input class="form-control" type="text" id="barrel" name="winebatch[barrel]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="comments">Comments</label>
+                <textarea class="form-control" type="text" id="comments" name="winebatch[comments]" required></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Add Wine Batch</button>
+            </div>
+        </form>
+        <a href="/winebatches">Back to All Batches</a>
+    </div>
+</div>

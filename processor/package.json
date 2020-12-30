@@ -1,0 +1,21 @@
+{
+  "name": "processor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "sawtooth-sdk": "latest",
+    "axios": "latest",
+    "body-parser": "latest",
+    "cbor": "latest",
+    "express": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,31 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark d-flex">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">Oregon Wines</a>
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarNavAltMarkup"
+			aria-controls="navbarNavAltMarkup"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse navbar-right" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-link" href="/winebatches">Wine Batches</a>
+				<a class="nav-link" href="/winebatches/new">Add Wine Batches</a>
+			</div>
+			<div class="navbar-nav ms-auto">
+				<% if(currentUser) {%>
+				<a class="nav-link navbar-right" href="#">Account Management</a>
+				<a href="/logout" class="nav-link">Logout</a>
+				<% } else{ %>
+				<a href="/login" class="nav-link">Login</a>
+				<a href="/register" class="nav-link">Register</a>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</nav>
