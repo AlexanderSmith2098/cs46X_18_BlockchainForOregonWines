@@ -2,6 +2,7 @@ const { TransactionHandler } = require("sawtooth-sdk/processor/handler");
 const { InvalidTransaction } = require("sawtooth-sdk/processor/exceptions");
 
 const { createHash } = require("crypto");
+const { rejects } = require("assert");
 
 const _hash = (input, length) =>
 	createHash("sha512")
@@ -17,7 +18,6 @@ class Handler extends TransactionHandler {
 	constructor() {
 		super(TP_FAMILY, [TP_VERSION], [TP_NAMESPACE]);
 	}
-
 	// Properties of `txn`:
 	// - txn.payload: the encoded payload sent from your client
 	// - txn.header: the decoded TransactionHeader for this transaction
@@ -48,73 +48,66 @@ class Handler extends TransactionHandler {
 		}
 
 		const action = payload.action;
-		const publicKey = txn.header.signerPublicKey;
-		console.log(action);
+		const address = `${TP_NAMESPACE}${_hash(payload.oName, 16)}${_hash(
+			payload.wID,
+			48
+		)}`;
 
 		if (action === "CREATE_BATCH") {
-			const address = `${TP_NAMESPACE}${_hash(payload.oName, 16)}${_hash(payload.bName, 48)}`;
-			console.log(address);
-			console.log(payload.value);
-			let wineBatch = {
-				bName: payload.value.bName,
-				numBottles: payload.value.numBottles,
-				barrel: payload.value.barrel,
-			};
-			let entries = {
-				[address]: Buffer.from(new String(JSON.stringify(wineBatch))),
-			};
-			return context.setState(entries).catch((error) => {
-				let message = error.message ? error.message : error;
-				throw new InvalidTransaction(message);
+			return create_batch(context, payload, address).catch((error) => {
+				console.log(error);
 			});
-		}
-		else if (action === "UPDATE_BATCH") {
-			const address = `${TP_NAMESPACE}${_hash(payload.oName, 16)}${_hash(
-				payload.bName,
-				48
-			)}`;
-			console.log(address);
-			console.log(payload.value);
-			let wineBatch = {
-				bName: payload.value.bName,
-				numBottles: payload.value.numBottles,
-				barrel: payload.value.barrel,
-			};
-			let entries = {
-				[address]: Buffer.from(new String(JSON.stringify(wineBatch))),
-			};
-			return context.setState(entries).catch((error) => {
-				let message = error.message ? error.message : error;
-				throw new InvalidTransaction(message);
+		} else if (action === "UPDATE_BATCH") {
+			return update_batch(context, payload, address).catch((error) => {
+				console.log(error);
 			});
-		}
-		// const address = `${TP_NAMESPACE}${_hash("sampleKey", 64)}`;
-		else if (action === "DELETE_BATCH") {
-			const address = `${TP_NAMESPACE}${_hash(payload.oName, 16)}${_hash(
-				payload.bName,
-				48
-			)}`;
-			console.log(address);
-			console.log(payload.value);
-			
-			// let entries = {
-			// 	[address]: Buffer.from(new String(JSON.stringify(wineBatch))),
-			// };
+		} else if (action === "DELETE_BATCH") {
 			return context.deleteState([address]).catch((error) => {
-				let message = error.message ? error.message : error;
-				throw new InvalidTransaction(message);
+				console.log(error)
 			});
+		} else {
+			throw new InvalidTransaction("Unknown action: " + action);
 		}
-		// const address = `${TP_NAMESPACE}${_hash("sampleKey", 64)}`;
-
-		// let entries = {
-		// 	[address]: Buffer.from(new String(JSON.stringify("somevalue"))),
-		// };
-		// return context.setState(entries).catch((error) => {
-		// 	let message = error.message ? error.message : error;
-		// 	throw new InvalidTransaction(message);
-		// });
 	}
 }
+const create_batch = (context, payload, address) => {
+	return context.getState([address]).then((state) => {
+		if (state[address].length > 0) {
+			throw "Wine Batch already exists!";
+		}
+		let wineBatch = create_wineBatch(payload);
+		let entries = {
+			[address]: Buffer.from(new String(JSON.stringify(wineBatch))),
+		};
+		return context.setState(entries);
+	});
+};
+const update_batch = (context, payload, address) => {
+	return context.getState([address]).then((state) => {
+		console.log(state[address].length);
+		if (state[address].length === 0) {
+			throw "No Batch to Update!";
+		}
+		let wineBatch = create_wineBatch(payload);
+		let entries = {
+			[address]: Buffer.from(new String(JSON.stringify(wineBatch))),
+		};
+		return context.setState(entries);
+	});
+};
+
+const create_wineBatch = (payload) => {
+	let wineBatch = {
+		wID: payload.wID,
+		bName: payload.value.bName,
+		grapes: payload.value.grapes,
+		numBottles: payload.value.numBottles,
+		gLocation: payload.value.gLocation,
+		barrel: payload.value.barrel,
+		comments: payload.value.comments,
+	};
+	console.log(wineBatch);
+	return wineBatch;
+};
 
 module.exports = Handler;

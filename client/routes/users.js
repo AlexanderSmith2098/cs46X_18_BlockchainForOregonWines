@@ -3,6 +3,9 @@ const router = express.Router();
 const passport = require("passport");
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/users");
+const { createContext } = require("sawtooth-sdk/signing");
+const { randomBytes } = require("crypto");
+const secp256k1 = require("secp256k1");
 
 router.get("/register", (req, res) => {
 	res.render("users/register");
@@ -13,13 +16,16 @@ router.post(
 	catchAsync(async (req, res) => {
 		try {
 			const { email, username, password } = req.body;
-			const user = new User({ email, username });
+			const context = createContext("secp256k1");
+			const pk = context.newRandomPrivateKey();
+			const privateKey = pk.asHex();
+			const user = new User({ email, privateKey, username });
+			console.log(user.privateKey)
 			const registeredUser = await User.register(user, password);
-			req.login(registeredUser, err => {
-				if(err){
+			req.login(registeredUser, (err) => {
+				if (err) {
 					return next(err);
-				}
-				else {
+				} else {
 					req.flash("success", "Welcome to Oregon Wines");
 					res.redirect("/winebatches");
 				}
@@ -43,7 +49,7 @@ router.post(
 	}),
 	(req, res) => {
 		req.flash("success", "Welcome back!");
-		const redirectUrl = req.session.returnTo || '/winebatches';
+		const redirectUrl = req.session.returnTo || "/winebatches";
 		delete req.session.returnTo;
 		res.redirect(redirectUrl);
 	}
@@ -54,5 +60,6 @@ router.get("/logout", (req, res) => {
 	req.flash("success", "Logged Out");
 	res.redirect("/login");
 });
+
 
 module.exports = router;

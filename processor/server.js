@@ -14,14 +14,13 @@ const API_URL = "http://localhost:8008";
 
 const { createContext, CryptoFactory } = require("sawtooth-sdk/signing");
 const { createHash } = require("crypto");
-const crypto = require("crypto");
 const { protobuf } = require("sawtooth-sdk");
 const axios = require("axios").default;
-const { ConsensusCommitBlockRequest } = require("sawtooth-sdk/protobuf");
 
 const context = createContext("secp256k1");
 const privateKey = context.newRandomPrivateKey();
 const signer = new CryptoFactory(context).newSigner(privateKey);
+console.log(signer);
 
 const _hash = (input, length) =>
 	createHash("sha512")
