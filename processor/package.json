@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "sawtooth-sdk": "latest",
-    "axios": "latest",
-    "body-parser": "latest",
-    "cbor": "latest",
-    "express": "latest"
+    "sawtooth-sdk": "latest"
   },
   "devDependencies": {},
   "scripts": {

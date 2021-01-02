@@ -2,7 +2,6 @@ const { TransactionHandler } = require("sawtooth-sdk/processor/handler");
 const { InvalidTransaction } = require("sawtooth-sdk/processor/exceptions");
 
 const { createHash } = require("crypto");
-const { rejects } = require("assert");
 
 const _hash = (input, length) =>
 	createHash("sha512")
@@ -62,9 +61,9 @@ class Handler extends TransactionHandler {
 				console.log(error);
 			});
 		} else if (action === "DELETE_BATCH") {
-			return context.deleteState([address]).catch((error) => {
-				console.log(error)
-			});
+			return delete_batch(context, address).catch((error) =>{
+				console.log(error);
+			})
 		} else {
 			throw new InvalidTransaction("Unknown action: " + action);
 		}
@@ -86,13 +85,22 @@ const update_batch = (context, payload, address) => {
 	return context.getState([address]).then((state) => {
 		console.log(state[address].length);
 		if (state[address].length === 0) {
-			throw "No Batch to Update!";
+			throw "No Batch to update!";
 		}
 		let wineBatch = create_wineBatch(payload);
 		let entries = {
 			[address]: Buffer.from(new String(JSON.stringify(wineBatch))),
 		};
 		return context.setState(entries);
+	});
+};
+const delete_batch = (context, address) => {
+	return context.getState([address]).then((state) => {
+		console.log(state[address].length);
+		if (state[address].length === 0) {
+			throw "No Batch to delete!";
+		}
+		return context.deleteState([address]);
 	});
 };
 

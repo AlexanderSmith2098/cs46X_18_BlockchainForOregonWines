@@ -4,8 +4,6 @@ const passport = require("passport");
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/users");
 const { createContext } = require("sawtooth-sdk/signing");
-const { randomBytes } = require("crypto");
-const secp256k1 = require("secp256k1");
 
 router.get("/register", (req, res) => {
 	res.render("users/register");

@@ -1,6 +1,5 @@
 const { wineBatchSchema } = require("./schemas.js");
 const ExpressError = require("./utils/ExpressError");
-const WineBatch = require("./models/winebatch");
 
 module.exports.isLoggedIn = (req,res,next) => {
     if(!req.isAuthenticated()){
@@ -19,14 +18,4 @@ module.exports.validateWineBatch = (req, res, next) => {
 	} else {
 		next();
 	}
-};
-
-module.exports.isOwner = async (req, res, next) => {
-	const { id } = req.params;
-	const winebatch = await WineBatch.findById(id);
-	if (!winebatch.owner.equals(req.user._id)) {
-		req.flash("error", "You do not have permission to do that!");
-		return res.redirect(`/winebatches`);
-	}
-	next();
 };

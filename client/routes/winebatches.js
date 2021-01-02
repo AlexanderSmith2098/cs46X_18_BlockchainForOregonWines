@@ -2,8 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const catchAsync = require("../utils/catchAsync");
-const { isLoggedIn, isOwner, validateWineBatch } = require("../middleware");
-const WineBatch = require("../models/winebatch");
+const { isLoggedIn, validateWineBatch } = require("../middleware");
 const { createHash } = require("crypto");
 const { v4: uuidv4 } = require("uuid");
 
@@ -29,8 +28,6 @@ router.get(
 	"/",
 	isLoggedIn,
 	catchAsync(async (req, res) => {
-		// const winebatches = await WineBatch.find({ owner: req.user._id });
-		// res.render("winebatches/index", { winebatches });
 		const address = TP_NAMESPACE + _hash(req.user._id.toString(), 16);
 		let winebatches = await fetchMBatches(address);
 		res.render("winebatches/index", { winebatches, address });
@@ -46,11 +43,6 @@ router.post(
 	isLoggedIn,
 	validateWineBatch,
 	catchAsync(async (req, res) => {
-		// const winebatch = new WineBatch(req.body.winebatch);
-		// winebatch.owner = req.user._id;
-		// await winebatch.save();
-		// req.flash("success", "Successfully created a new wine batch.");
-		// res.redirect(`/winebatches/${winebatch._id}`);
 		const uID = uuidv4();
 		let payload = create_payload(
 			"CREATE_BATCH",
@@ -59,8 +51,8 @@ router.post(
 			uID
 		);
 		let address =
-			TP_NAMESPACE + _hash(payload.oName, 16) + _hash(payload.wID, 48);		
-		const batchListBytes = setup_batch(payload, req.user.privateKey, address)
+			TP_NAMESPACE + _hash(payload.oName, 16) + _hash(payload.wID, 48);
+		const batchListBytes = setup_batch(payload, req.user.privateKey, address);
 		await axios.post(`${API_URL}/batches`, batchListBytes, {
 			headers: { "Content-Type": "application/octet-stream" },
 		});
@@ -75,13 +67,6 @@ router.get(
 	"/:id",
 	isLoggedIn,
 	catchAsync(async (req, res) => {
-		// const winebatch = await WineBatch.findById(req.params.id);
-		// if (!winebatch) {
-		// 	req.flash("error", "Cannot find that wine batch.");
-		// 	return res.redirect("/winebatches");
-		// }
-		// res.render("winebatches/show", { winebatch });
-
 		const address =
 			TP_NAMESPACE +
 			_hash(req.user._id.toString(), 16) +
@@ -99,12 +84,6 @@ router.get(
 	"/:id/edit",
 	isLoggedIn,
 	catchAsync(async (req, res) => {
-		// const winebatch = await WineBatch.findById(req.params.id);
-		// if (!winebatch) {
-		// 	req.flash("error", "Cannot find that wine batch.");
-		// 	return res.redirect("/winebatches");
-		// }
-		// res.render("winebatches/edit", { winebatch });
 		const address =
 			TP_NAMESPACE +
 			_hash(req.user._id.toString(), 16) +
@@ -123,14 +102,6 @@ router.put(
 	isLoggedIn,
 	validateWineBatch,
 	catchAsync(async (req, res) => {
-		// const { id } = req.params;
-		// const winebatch = await WineBatch.findByIdAndUpdate(id, {
-		// 	...req.body.winebatch,
-		// });
-		// req.flash("success", "Successfully updated wine batch.");
-		// res.redirect(`/winebatches/${winebatch._id}`);
-
-		
 		let payload = create_payload(
 			"UPDATE_BATCH",
 			req.body.winebatch,
@@ -154,10 +125,6 @@ router.delete(
 	"/:id",
 	isLoggedIn,
 	catchAsync(async (req, res) => {
-		// 	const { id } = req.params;
-		// 	await WineBatch.findByIdAndDelete(id);
-		// 	req.flash("success", "Successfully deleted wine batch.");
-		// 	res.redirect("/winebatches");
 		let payload = {
 			action: "DELETE_BATCH",
 			oName: req.user._id.toString(),
@@ -223,8 +190,7 @@ const setup_batch = (payload, pk, address) => {
 	const batch = create_batch(batchHeaderBytes, batchSignature, transactions);
 	const batchListBytes = create_batchListBytes(batch);
 	return batchListBytes;
-}
-
+};
 
 const create_transactionHeaderBytes = (address, signer, payloadBytes) => {
 	const transactionHeaderBytes = protobuf.TransactionHeader.encode({

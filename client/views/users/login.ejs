@@ -2,24 +2,69 @@
 <h1>Login</h1>
 <form action="/login" method="POST" class="validated-form" novalidate>
 	<div class="mb-3">
-		<label class="form-label" for="username">User name</label>
+		<label class="form-label" for="usernameL">User name</label>
 		<input
 			class="form-control"
 			type="text"
-			id="username"
+			id="usernameL"
 			name="username"
 			required
 		/>
 	</div>
 	<div class="mb-3">
-		<label class="form-label" for="password">Password</label>
+		<label class="form-label" for="passwordL">Password</label>
 		<input
 			class="form-control"
 			type="password"
-			id="password"
+			id="passwordL"
 			name="password"
 			required
 		/>
-    </div>
-    <button class="btn-success">Login</button>
+	</div>
+	<button class="btn-success">Login</button>
 </form>
+
+<!-- <style>
+	input[type="text"] {
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px;
+	}
+	input[type="password"] {
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		border-top: 0px;
+	}
+</style>
+
+<div class="text-center mt-4">
+	<form
+		style="max-width: 300px; margin: auto"
+		action="/login"
+		method="POST"
+		class="validated-form"
+		novalidate
+	>
+		<h1 class="h3 mb-3 font-weight normal">Please Sign In</h1>
+		<label for="username" class="visually-hidden form-label">User name</label>
+		<input
+			type="text"
+			id="username"
+			class="form-control"
+			placeholder="User name"
+			name="username"
+			required
+			autofocus
+		/>
+		<label for="password" class="visually-hidden form-label">Password</label>
+		<input
+			type="password"
+			id="password"
+			placeholder="Password"
+			name="password"
+			class="form-control"
+		/>
+		<div class="d-grid gap-2 mt-2">
+			<button class="btn btn-primary" type="button">Login</button>
+		</div>
+	</form>
+</div> -->
