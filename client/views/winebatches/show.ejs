@@ -1,26 +1,107 @@
 <% layout('layouts/boilerplate') %>
 <div class="row">
-    <div class="col-6 offset-3">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title"><%= winebatch.bName%></h5>
-                <p class="card-text"><%= winebatch.comments%></p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><b>Grape Type: </b><%= winebatch.grapes%></li>
-                <li class="list-group-item"><b>Number of Bottles: </b><%= winebatch.numBottles%></li>
-                <li class="list-group-item"><b>Location (Origin) of Grapes: </b><%= winebatch.gLocation%></li>
-                <li class="list-group-item"><b>Barrel Type: </b><%= winebatch.barrel%></li>
-            </ul>
-            <div class="card-body">
-                <a class="card-link btn btn-info" href="/winebatches/<%= winebatch.wID %>/edit">Edit</a>
-                <form class="d-inline" action="/winebatches/<%= winebatch.wID %>?_method=DELETE" method="POST">
-                    <button class="btn btn-danger">Delete</button>
-                </form>
-            </div>
-            <div class="card-footer text-muted">
-                Date Created: 12/20/20
-            </div>
-        </div>
-    </div>
+	<div class="col-6 offset-3">
+		<div class="card mb-3">
+			<div class="card-body">
+				<h5 class="card-title"><%= winebatch.bName%></h5>
+				<p class="card-text"><%= winebatch.comments%></p>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">
+					<b>Wine Name: </b><%= winebatch.wName%>
+				</li>
+				<li class="list-group-item">
+					<b>Grape Type: </b><%= winebatch.grapes%>
+				</li>
+				<li class="list-group-item">
+					<b>Number of Bottles: </b><%= winebatch.numBottles%>
+				</li>
+				<li class="list-group-item">
+					<b>Location (Origin) of Grapes: </b><%= winebatch.gLocation%>
+				</li>
+				<li class="list-group-item">
+					<b>Barrel Type: </b><%= winebatch.barrel%>
+				</li>
+			</ul>
+			<div class="card-body">
+				<a
+					class="card-link btn btn-info"
+					href="/winebatches/<%= winebatch.wID %>/edit"
+					>Edit</a
+				>
+				<form
+					class="d-inline"
+					action="/winebatches/<%= winebatch.wID %>?_method=DELETE"
+					method="POST"
+				>
+					<button class="btn btn-danger">Delete</button>
+				</form>
+				<button type="button" class="btn btn-success" id="qrCodeButt">
+					QRCode
+				</button>
+			</div>
+			<div class="card-footer text-muted">Date Created: 12/20/20</div>
+		</div>
+	</div>
 </div>
+
+<div
+	class="modal fade"
+	id="qrCodeModal"
+	tabindex="-1"
+	aria-labelledby="qrCodeModal"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="qrCodeModalLabel">
+					<%= winebatch.bName %> QRCode
+				</h5>
+				<button
+					type="button"
+					class="btn-close"
+					aria-label="Close"
+					id="xButt"
+				></button>
+			</div>
+			<div class="modal-body" id="modal-body">
+				<div class="row justify-content-center">
+					<div id="qrCodeOutput" class="col"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" id="buttClose">
+					Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- The way this is implemented is so janky and bad.  We really need to fix it. -->
+<script src="/javascripts/jquery-3.5.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/qrcode.js"></script>
+<script>
+	let myModal = new bootstrap.Modal(document.getElementById("qrCodeModal"));
+    let qrcString = "http://localhost:8080/winebatches/custview?a=<%=winebatch.address%>"
+	let qrcode = new QRCode(document.getElementById("qrCodeOutput"), {
+		width: 400,
+		height: 400,
+	});
+	qrcode.makeCode(qrcString);
+	let img = document.querySelector("img");
+	img.style.padding = 0;
+	img.style.margin = 'auto';
+	img.style.display = 'block';
+
+	document.getElementById("qrCodeButt").addEventListener("click", () => {
+		myModal.show();
+	});
+	document.getElementById("buttClose").addEventListener("click", () => {
+		myModal.hide();
+	});
+	document.getElementById("xButt").addEventListener("click", () => {
+		myModal.hide();
+	});
+</script>

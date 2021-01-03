@@ -8,6 +8,10 @@
                 <input class="form-control" type="text" id="bName" name="winebatch[bName]" value="<%= winebatch.bName %>" required>
             </div>
             <div class="mb-3">
+                <label class="form-label" for="wName">Wine Name</label>
+                <input class="form-control" type="text" id="wName" name="winebatch[wName]" value="<%= winebatch.wName %>" required>
+            </div>
+            <div class="mb-3">
                 <label class="form-label" for="grapes">Grape Type</label>
                 <input class="form-control" type="text" id="grapes" name="winebatch[grapes]" value="<%= winebatch.grapes %>" required>
             </div>
@@ -35,6 +39,6 @@
                 <button class="btn btn-success">Edit Wine Batch</button>
             </div>
         </form>
-        <a href="/winebatches">Back to All Batches</a>
+        <a href="/winebatches/<%= winebatch.wID %>">Back to Selected Batch</a>
     </div>
 </div>

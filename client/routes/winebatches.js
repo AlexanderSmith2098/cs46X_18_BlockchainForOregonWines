@@ -34,6 +34,16 @@ router.get(
 	})
 );
 
+router.get("/custview", async (req,res) => {
+	const address = req.query.a;
+	console.log(req.query);
+	console.log(address);
+	let winebatch = await fetchBatch(address);
+	console.log(address);
+	console.log(winebatch);
+	res.render("winebatches/custview", {winebatch})
+})
+
 router.get("/new", isLoggedIn, (req, res) => {
 	res.render("winebatches/new");
 });
@@ -150,6 +160,7 @@ const create_payload = (action, data, oID, uID) => {
 		wID: uID,
 		value: {
 			bName: data.bName,
+			wName: data.wName,
 			grapes: data.grapes,
 			numBottles: data.numBottles,
 			gLocation: data.gLocation,
@@ -247,6 +258,7 @@ const fetchBatch = (address) => {
 			return '"' + matchedStr.substring(0, matchedStr.length - 1) + '":';
 		});
 		decoded = JSON.parse(jsonStr);
+		decoded.address = address;
 		return decoded;
 	});
 };
@@ -259,6 +271,7 @@ const fetchMBatches = (address) => {
 				return '"' + matchedStr.substring(0, matchedStr.length - 1) + '":';
 			});
 			decoded = JSON.parse(jsonStr);
+
 			return decoded;
 		});
 	});
