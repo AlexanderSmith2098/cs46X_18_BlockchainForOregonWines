@@ -34,15 +34,11 @@ router.get(
 	})
 );
 
-router.get("/custview", async (req,res) => {
+router.get("/custview", catchAsync(async (req,res) => {
 	const address = req.query.a;
-	console.log(req.query);
-	console.log(address);
 	let winebatch = await fetchBatch(address);
-	console.log(address);
-	console.log(winebatch);
 	res.render("winebatches/custview", {winebatch})
-})
+}))
 
 router.get("/new", isLoggedIn, (req, res) => {
 	res.render("winebatches/new");
