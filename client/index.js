@@ -12,8 +12,10 @@ const User = require('./models/users');
 
 const usersRoutes= require('./routes/users');
 const winebatchesRoutes = require('./routes/winebatches');
+const homepageRoutes = require('./routes/homepage');
 
-mongoose.connect("mongodb://172.30.0.1:27017/oregon-wines", {
+
+mongoose.connect("mongodb://localhost/oregon-wines", {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
@@ -66,6 +68,7 @@ app.use((req,res,next) => {
 
 app.use('/', usersRoutes);
 app.use('/winebatches', winebatchesRoutes);
+app.use('/homepage', homepageRoutes);
 
 app.all("*", (req, res, next) => {
 	next(new ExpressError("Page Not Found", 404));
