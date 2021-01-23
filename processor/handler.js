@@ -115,6 +115,7 @@ const create_wineBatch = (payload) => {
 		gLocation: payload.value.gLocation,
 		barrel: payload.value.barrel,
 		comments: payload.value.comments,
+		status: payload.value.status
 	};
 	console.log(wineBatch);
 	return wineBatch;
