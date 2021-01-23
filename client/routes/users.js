@@ -4,6 +4,7 @@ const passport = require("passport");
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/users");
 const { createContext } = require("sawtooth-sdk/signing");
+const { isLoggedIn } = require("../middleware");
 
 router.get("/register", (req, res) => {
 	res.render("users/register");
@@ -18,7 +19,7 @@ router.post(
 			const pk = context.newRandomPrivateKey();
 			const privateKey = pk.asHex();
 			const user = new User({ email, privateKey, username });
-			console.log(user.privateKey)
+			console.log(user.privateKey);
 			const registeredUser = await User.register(user, password);
 			req.login(registeredUser, (err) => {
 				if (err) {
@@ -52,12 +53,37 @@ router.post(
 		res.redirect(redirectUrl);
 	}
 );
+router.get("/account", isLoggedIn, (req, res) => {
+	res.render("users/account");
+});
+router.get("/passchan", isLoggedIn, (req, res) => {
+	res.render("users/passchan");
+});
+router.post(
+	"/passchan",
+	isLoggedIn,
+	catchAsync(async (req, res) => {
+		if (req.body.Npassword != req.body.NpasswordAg) {
+			req.flash("error", "New passwords don't match!");
+			return res.redirect("/passchan");
+		} else {
+			try{
+				const user = await User.findOne(req.user._id);
+				await user.changePassword(req.body.Opassword, req.body.Npassword);
+				req.flash("success", "Password Changed Successfully");
+				return res.redirect("/account");
+			}catch (e){
+				req.flash("error", "Old password not entered correctly!")
+				return res.redirect("/passchan");
+			}
+		}
+	})
+);
 
 router.get("/logout", (req, res) => {
 	req.logout();
 	req.flash("success", "Logged Out");
 	res.redirect("/login");
 });
-
 
 module.exports = router;

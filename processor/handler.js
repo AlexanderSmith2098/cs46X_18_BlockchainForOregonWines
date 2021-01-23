@@ -123,6 +123,7 @@ const create_wineBatch = (payload) => {
 		avg_temp: payload.value.avg_temp,
 		tannins: payload.value.tannins,
 		comments: payload.value.comments,
+		status: payload.value.status
 	};
 	console.log(wineBatch);
 	return wineBatch;

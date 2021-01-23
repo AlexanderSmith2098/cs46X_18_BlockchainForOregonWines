@@ -170,6 +170,7 @@ const create_payload = (action, data, oID, uID) => {
             avg_temp: data.avg_temp,
             tannins: data.tannins,
             comments: data.comments,
+			status: "COMPLETED"
 		},
 	};
 	return payload;
@@ -275,8 +276,8 @@ const fetchMBatches = (address) => {
 				return '"' + matchedStr.substring(0, matchedStr.length - 1) + '":';
 			});
 			decoded = JSON.parse(jsonStr);
-
 			return decoded;
+		
 		});
 	});
 };
