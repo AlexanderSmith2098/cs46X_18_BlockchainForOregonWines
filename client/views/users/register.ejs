@@ -1,6 +1,44 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style2.css">
 <h1>Register</h1>
-<form action="/register" method="POST" class="validated-form" novalidate>
+<form action="/login" method="POST" class="validated-form" novalidate>
+	<body>
+		<div class="container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card">
+					<div class="card-header">
+						<h3>New User</h3>
+					</div>
+					<div class="card-body">
+						<form>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="username">
+								
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="password" class="form-control" placeholder="password">
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="email" class="form-control" placeholder="email">
+							</div>
+							<div class="row align-items-center remember">
+							</div>
+							<div class="form-group">
+								<input type="submit" value="Register" class="btn-success float-right btn_login">							</div>
+						</form>
+				</div>
+			</div>
+		</div>
+		</body>
+	
+</form>
+<!--<form action="/register" method="POST" class="validated-form" novalidate>
 	<div class="mb-3">
 		<label class="form-label" for="username">User name</label>
 		<input
@@ -32,4 +70,4 @@
 		/>
     </div>
     <button class="btn-success">Register</button>
-</form>
+</form> -->
