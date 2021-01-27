@@ -107,7 +107,7 @@ const delete_batch = (context, address) => {
 const create_wineBatch = (payload) => {
 	let wineBatch = {
 
-		wID: payload.wine_id,
+		wID: payload.wID,
 		batch_name: payload.value.batch_name,
 		wine_name: payload.value.wine_name,
 		num_bottles: payload.value.num_bottles,
