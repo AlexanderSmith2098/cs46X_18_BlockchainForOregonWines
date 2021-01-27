@@ -4,32 +4,64 @@
     <div class="col-6 offset-3">
         <form action="/winebatches" method="POST" novalidate class="validated-form">
             <div class="mb-3">
-                <label class="form-label" for="bName">Batch Name</label>
-                <input class="form-control" type="text" id="bName" name="winebatch[bName]" required>
+                <label class="form-label" for="batch_name">Batch Name</label>
+                <input class="form-control" type="text" id="batch_name" name="winebatch[batch_name]" required>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="wName">Wine Name</label>
-                <input class="form-control" type="text" id="wName" name="winebatch[wName]" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="grapes">Grape Type</label>
-                <input class="form-control" type="text" id="grapes" name="winebatch[grapes]" required>
+                <label class="form-label" for="wine_name">Wine Name</label>
+                <input class="form-control" type="text" id="wine_name" name="winebatch[wine_name]" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" fnumBottles">Number of Bottles</label>
                 <div class="input-group">
-                    <span class="input-group-text" id="numBottles-label">#</span>
-                    <input type="text" class="form-control" id="numBottles" placeholder="0" aria-label="numBottles"
-                        aria-describedby="numBottles-label" name="winebatch[numBottles]" required>
+                    <span class="input-group-text" id="num_bottles-label">#</span>
+                    <input type="text" class="form-control" id="num_bottles" placeholder="0" aria-label="num_bottles"
+                        aria-describedby="num_bottles-label" name="winebatch[num_bottles]" required>
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="gLocation">Location (Origin) of Grapes</label>
-                <input class="form-control" type="text" id="gLocation" name="winebatch[gLocation]" required>
+                <label class="form-label" for="style">Style</label>
+                <input class="form-control" type="text" id="style" name="winebatch[style]" required>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="barrel">Barrel Type</label>
-                <input class="form-control" type="text" id="barrel" name="winebatch[barrel]" required>
+                <label class="form-label" for="alcohol">Alcohol</label>
+                <input class="form-control" type="text" id="alcohol" name="winebatch[alcohol]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="ava">American Viticulture Area</label>
+                <input class="form-control" type="text" id="ava" name="winebatch[ava]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="acidity">Acidity</label>
+                <input class="form-control" type="text" id="acidity" name="winebatch[acidity]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="grape_variety">Grape Variety</label>
+                <input class="form-control" type="text" id="grape_variety" name="winebatch[grape_variety]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="harvest_loc">Harvest Location</label>
+                <input class="form-control" type="text" id="harvest_loc" name="winebatch[harvest_loc]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="harvest_date">Harvest Date</label>
+                <input class="form-control" type="text" id="harvest_date" name="winebatch[harvest_date]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="bottle_date">Bottle Date</label>
+                <input class="form-control" type="text" id="bottle_date" name="winebatch[bottle_date]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="avg_sunshine">Average Sunshine</label>
+                <input class="form-control" type="text" id="avg_sunshine" name="winebatch[avg_sunshine]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="avg_temp">Average Temperature</label>
+                <input class="form-control" type="text" id="avg_temp" name="winebatch[avg_temp]" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="tannins">Tannins</label>
+                <input class="form-control" type="text" id="tannins" name="winebatch[tannins]" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="comments">Comments</label>

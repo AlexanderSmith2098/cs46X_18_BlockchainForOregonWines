@@ -107,13 +107,21 @@ const delete_batch = (context, address) => {
 const create_wineBatch = (payload) => {
 	let wineBatch = {
 
-		wID: payload.wID,
-		bName: payload.value.bName,
-		wName: payload.value.wName,
-		grapes: payload.value.grapes,
-		numBottles: payload.value.numBottles,
-		gLocation: payload.value.gLocation,
-		barrel: payload.value.barrel,
+		wID: payload.wine_id,
+		batch_name: payload.value.batch_name,
+		wine_name: payload.value.wine_name,
+		num_bottles: payload.value.num_bottles,
+		style: payload.value.style,
+		alcohol: payload.value.alcohol,
+		ava: payload.value.ava,
+		acidity: payload.value.acidity,
+		grape_variety: payload.value.grape_variety,
+		harvest_loc: payload.value.harvest_loc,
+		harvest_date: payload.value.harvest_date,
+		bottle_date: payload.value.bottle_date,
+		avg_sunshine: payload.value.avg_sunshine,
+		avg_temp: payload.value.avg_temp,
+		tannins: payload.value.tannins,
 		comments: payload.value.comments,
 	};
 	console.log(wineBatch);
