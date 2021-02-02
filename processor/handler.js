@@ -108,6 +108,7 @@ const create_wineBatch = (payload) => {
 	let wineBatch = {
 
 		wID: payload.wID,
+		status: payload.value.status,
 		batch_name: payload.value.batch_name,
 		wine_name: payload.value.wine_name,
 		num_bottles: payload.value.num_bottles,
@@ -122,8 +123,7 @@ const create_wineBatch = (payload) => {
 		avg_sunshine: payload.value.avg_sunshine,
 		avg_temp: payload.value.avg_temp,
 		tannins: payload.value.tannins,
-		comments: payload.value.comments,
-		status: payload.value.status
+		comments: payload.value.comments
 	};
 	console.log(wineBatch);
 	return wineBatch;
