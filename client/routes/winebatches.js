@@ -33,12 +33,24 @@ router.get(
 		res.render("winebatches/index", { winebatches, address });
 	})
 );
+router.get(
+	"/comp",
+	isLoggedIn,
+	catchAsync(async (req, res) => {
+		const address = TP_NAMESPACE + _hash(req.user._id.toString(), 16);
+		let winebatches = await fetchMBatches(address);
+		res.render("winebatches/comp", { winebatches, address });
+	})
+);
 
-router.get("/custview", catchAsync(async (req,res) => {
-	const address = req.query.a;
-	let winebatch = await fetchBatch(address);
-	res.render("winebatches/custview", {winebatch})
-}))
+router.get(
+	"/custview",
+	catchAsync(async (req, res) => {
+		const address = req.query.a;
+		let winebatch = await fetchBatch(address);
+		res.render("winebatches/custview", { winebatch });
+	})
+);
 
 router.get("/new", isLoggedIn, (req, res) => {
 	res.render("winebatches/new");
@@ -47,9 +59,9 @@ router.get("/new", isLoggedIn, (req, res) => {
 router.post(
 	"/",
 	isLoggedIn,
-	validateWineBatch,
 	catchAsync(async (req, res) => {
 		const uID = uuidv4();
+		req.body.winebatch.status = 'in-progress'
 		let payload = create_payload(
 			"CREATE_BATCH",
 			req.body.winebatch,
@@ -102,11 +114,40 @@ router.get(
 		res.render("winebatches/edit", { winebatch });
 	})
 );
-
+router.post(
+	"/:id/status",
+	isLoggedIn,
+	catchAsync(async (req, res) => {
+		const address =
+			TP_NAMESPACE +
+			_hash(req.user._id.toString(), 16) +
+			_hash(req.params.id, 48);
+		
+		const winebatch = await fetchBatch(address);
+		if (!winebatch) {
+			req.flash("error", "Cannot find that wine batch.");
+			return res.redirect("/winebatches");
+		}
+		winebatch.status = "completed";
+		let payload = create_payload(
+			"UPDATE_BATCH",
+			winebatch,
+			req.user._id.toString(),
+			req.params.id
+		);
+		const batchListBytes = setup_batch(payload, req.user.privateKey, address);
+		await axios.post(`${API_URL}/batches`, batchListBytes, {
+			headers: { "Content-Type": "application/octet-stream" },
+		});
+		setTimeout(function () {
+			req.flash("success", "Successfully updated wine batch.");
+			res.redirect(`/winebatches/${payload.wID}`);
+		}, 1000);
+	})
+);
 router.put(
 	"/:id",
 	isLoggedIn,
-	validateWineBatch,
 	catchAsync(async (req, res) => {
 		let payload = create_payload(
 			"UPDATE_BATCH",
@@ -156,21 +197,21 @@ const create_payload = (action, data, oID, uID) => {
 		wID: uID,
 		value: {
 			batch_name: data.batch_name,
+			status: data.status,
 			wine_name: data.wine_name,
 			num_bottles: data.num_bottles,
-            style: data.style,
-            alcohol: data.alcohol,
-            ava: data.ava,
-            acidity: data.acidity,
-            grape_variety: data.grape_variety,
-            harvest_loc: data.harvest_loc,
-            harvest_date: data.harvest_date,
-            bottle_date: data.bottle_date,
-            avg_sunshine: data.avg_sunshine,
-            avg_temp: data.avg_temp,
-            tannins: data.tannins,
-            comments: data.comments,
-			status: "COMPLETED"
+			style: data.style,
+			alcohol: data.alcohol,
+			ava: data.ava,
+			acidity: data.acidity,
+			grape_variety: data.grape_variety,
+			harvest_loc: data.harvest_loc,
+			harvest_date: data.harvest_date,
+			bottle_date: data.bottle_date,
+			avg_sunshine: data.avg_sunshine,
+			avg_temp: data.avg_temp,
+			tannins: data.tannins,
+			comments: data.comments,
 		},
 	};
 	return payload;
@@ -277,7 +318,6 @@ const fetchMBatches = (address) => {
 			});
 			decoded = JSON.parse(jsonStr);
 			return decoded;
-		
 		});
 	});
 };
