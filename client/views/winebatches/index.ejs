@@ -1,25 +1,27 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style7.css">
+
 <h1>In-progress Wine Batches</h1>
 <a href="/winebatches/comp">View Completed Winebatches</a>
 <br>
 <% let i = 0 %> <% while (i < winebatches.length) { %> <%let j = 1;%>
 <div class="row">
     <% while (j <=3) { %>
-	<% if (i <winebatches.length) {%> 
-		<% if (winebatches[i].status != "completed") {%> 
-	<div class="col-md-4">
-		<div class="card h-100 mb-5">
-			<div class="card-body">
+    <% if (i <winebatches.length) {%> 
+	<div class="col-md-5">
+		<div class="card h-500 mb-5">
+			<div class="card">
+				<div class="card-header">
 				<h5 class="card-title">Batch Name: <%= winebatches[i].batch_name %></h5>
 				<h5 class="card-title">Wine Name: <%= winebatches[i].wine_name %></h5>
 				<p class="card-text"><%= winebatches[i].comments %></p>
-				<a class="btn btn-primary" href="/winebatches/<%=winebatches[i].wID%>"
+				<a class="btn btn_add" href="/winebatches/<%=winebatches[i].wID%>"
 					>View <%=winebatches[i].batch_name%></a
 				>
 			</div>
 		</div>
-	</div>
-	<% } %> 
+		</div>
+    </div>
     <% } %> 
     <% i += 1; %> <% j += 1; %> <% } %> <% j = 1 %>
 </div>

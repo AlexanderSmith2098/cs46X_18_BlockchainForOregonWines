@@ -1,8 +1,12 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style4.css">
+
 <div class="row">
-    <h1 class="text-center">New Wine Batch</h1>
     <div class="col-6 offset-3">
         <form action="/winebatches" method="POST" novalidate class="validated-form">
+            <h1>New Wine Batch</h1>
+            <div class="card">
+		<div class="card-header">
             <div class="mb-3">
                 <label class="form-label" for="batch_name">Batch Name</label>
                 <input class="form-control" type="text" id="batch_name" name="winebatch[batch_name]" required>
@@ -68,8 +72,13 @@
                 <textarea class="form-control" type="text" id="comments" name="winebatch[comments]"></textarea>
             </div>
             <div class="mb-3">
-                <button class="btn btn-success">Add Wine Batch</button>
+                <button class="btn float-right btn_add">Add Wine Batch</button>
+          
             </div>
         </form>
+
     </div>
+</div>
+    </div>
+
 </div>

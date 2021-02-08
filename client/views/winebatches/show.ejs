@@ -1,4 +1,6 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style5.css">
+
 <div class="row">
 	<div class="col-6 offset-3">
 		<div class="card mb-3">
@@ -6,6 +8,8 @@
 				<h5 class="card-title"><%= winebatch.batch_name%></h5>
 				<p class="card-text"><%= winebatch.comments%></p>
 			</div>
+			<div class="card">
+				<div class="card-header">
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">
 					<b>Wine Name: </b><%= winebatch.wine_name%>
@@ -46,6 +50,9 @@
 				<li class="list-group-item">
 					<b>Tannins: </b><%= winebatch.tannins%>
 				</li>
+				<li class="list-group-item">
+					<b>Comments: </b><%= winebatch.comments%>
+				</li>
 			</ul>
 			<div class="card-body">
 				<% if (winebatch.status != "completed") {%> 
@@ -78,6 +85,8 @@
 			<div class="card-footer text-muted">Date Created: 12/20/20</div>
 		</div>
 	</div>
+</div>
+</div>
 </div>
 
 <div

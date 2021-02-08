@@ -1,0 +1,83 @@
+html,body{
+    background-image: url('https://images-us-prod.cms.commerce.dynamics.com/cms/api/mhtmhnbtbn/imageFileData/MA2qTC?ver=f312&w=1600&h=700&q=80&m=6&f=jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    }
+    
+    .container{
+    height: 100%;
+    padding-left: 300px;
+    align-content: center;
+    text-emphasis-color: white;
+    color: white;
+    }
+    .form-label{
+        color:white;
+    }
+    .card{
+    align-content: center;
+    height: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5) !important;
+    color: white;
+    }
+    
+    .card-bod{
+
+        color: white;
+        
+        }
+    .card-header h3{
+    color: #FFFFFF;
+    }
+    
+    .social_icon{
+    position: absolute;
+    right: 20px;
+    top: -45px;
+    }
+    
+    
+    input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+    
+    }
+    
+    .remember{
+    color: white;
+    }
+    
+    .remember input
+    {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+    }
+    
+    .btn_add{
+    margin-top: 15px;
+    color: white;
+    font-weight: bold;
+    background-color: #8b0000;
+    width: auto;
+    }
+    
+    .btn_add:hover{
+    color: black;
+    background-color: white;
+    }
+
+    
+    .links{
+    color: white;
+    }
+    
+    .links a{
+    margin-left: 4px;
+    }
