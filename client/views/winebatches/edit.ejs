@@ -1,11 +1,19 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style6.css">
+
 <div class="row">
-    <h1 class="text-center">Edit Wine Batch</h1>
+  
     <div class="col-6 offset-3">
+       
         <form action="/winebatches/<%=winebatch.wID%>?_method=PUT" method="POST" novalidate class="validated-form">
+            <h1 class> Edit Wine Batch</h1>
+            <div class="card">
+                <div class="card-header">
             <div class="mb-3">
+      
                 <label class="form-label" for="bName">Batch Name</label>
                 <input class="form-control" type="text" id="bName" name="winebatch[bName]" value="<%= winebatch.bName %>" required>
+         
             </div>
             <div class="mb-3">
                 <label class="form-label" for="wName">Wine Name</label>
@@ -36,9 +44,13 @@
                 <textarea class="form-control" type="text" id="comments" name="winebatch[comments]" required><%= winebatch.comments %></textarea>
             </div>
             <div class="mb-3">
-                <button class="btn btn-success">Edit Wine Batch</button>
+                <button class="btn float-right btn_add">Edit Wine Batch</button>
             </div>
         </form>
+        <button class="btn float-right btn_add">
         <a href="/winebatches/<%= winebatch.wID %>">Back to Selected Batch</a>
+       </button>
+    </div>
+</div>
     </div>
 </div>

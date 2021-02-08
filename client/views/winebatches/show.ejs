@@ -1,11 +1,16 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style5.css">
+
 <div class="row">
 	<div class="col-6 offset-3">
 		<div class="card mb-3">
-			<div class="card-body">
+			
+			<div class="card-bod">
 				<h5 class="card-title"><%= winebatch.bName%></h5>
 				<p class="card-text"><%= winebatch.comments%></p>
 			</div>
+			<div class="card">
+				<div class="card-header">
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">
 					<b>Wine Name: </b><%= winebatch.wName%>
@@ -21,6 +26,9 @@
 				</li>
 				<li class="list-group-item">
 					<b>Barrel Type: </b><%= winebatch.barrel%>
+				</li>
+				<li class="list-group-item">
+					<b>Comments: </b><%= winebatch.comments%>
 				</li>
 			</ul>
 			<div class="card-body">
@@ -43,6 +51,8 @@
 			<div class="card-footer text-muted">Date Created: 12/20/20</div>
 		</div>
 	</div>
+</div>
+</div>
 </div>
 
 <div
