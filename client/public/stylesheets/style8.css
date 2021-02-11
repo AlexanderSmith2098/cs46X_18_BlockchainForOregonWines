@@ -1,44 +1,58 @@
 html,body{
-    background-image: url(photos/red-wine.jpg);
+    background-image: url('https://images-us-prod.cms.commerce.dynamics.com/cms/api/mhtmhnbtbn/imageFileData/MA2qTC?ver=f312&w=1600&h=700&q=80&m=6&f=jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     font-family: 'Numans', sans-serif;
-    color: white;
-    background-color: black;
-    background-attachment: scroll;
-    scroll-behavior: smooth;
-    overflow:auto
     }
     
     .container{
-        overflow: auto;
+        
     height: 100%;
     padding-left: 300px;
     align-content: center;
+    text-emphasis-color: white;
     color: white;
     }
     .form-label{
         color:white;
-        font-weight: bold;
     }
+    .card2{
+        align-content: center;
+        height: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 475px;
+        background-color: rgba(0, 0, 0, 0.556);
+        color:white;
+        }
+        .card3{
+            align-content: center;
+            height: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 225px;
+            background-color: rgba(0, 0, 0, 0.556);
+            color:white;
+            }
+            
     .card{
     align-content: center;
     height: auto;
     margin-top: auto;
     margin-bottom: auto;
-    width: 400px;
-    background-color: #8b0000 !important;
-    color: white;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.664);
+    color:black;
     }
     
-    .card-title{
+    .card-bod{
 
-        color: black;
+        color: white;
         
         }
     .card-header h3{
-    color: black;
+    color: #FFFFFF;
     }
     
     .social_icon{
@@ -70,7 +84,7 @@ html,body{
     margin-top: 15px;
     color: white;
     font-weight: bold;
-    background-color: black;
+    background-color: #8b0000;
     width: auto;
     }
     
