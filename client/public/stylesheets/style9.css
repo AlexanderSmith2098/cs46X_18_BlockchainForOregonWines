@@ -1,0 +1,49 @@
+
+html,body{
+    background-image: url('https://www.teahub.io/photos/full/173-1734356_1920x1080-red-black-circular-gradient-destop-wallpaper-black.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    color: white;
+    }
+    h1{
+        text-align: center;
+        color: white;
+    }
+    .container{
+    height: 100%;
+    align-content: center;
+    }
+    
+    .card{
+
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: auto;
+    width: 450px;
+    background-color: rgba(0, 0, 0, 0.75) !important;
+    
+    }
+    /*.card-body{
+        background-color: rgba(0, 0, 0, 0.35) !important;
+    }*/
+  
+    
+    
+    .card-header h3{
+    color: white;
+    }
+    
+    
+    input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+    
+    }
+    
+    .remember{
+    color: white;
+    }
+    
+    
