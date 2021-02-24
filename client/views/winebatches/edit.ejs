@@ -4,12 +4,13 @@
 <div class="row">
   
     <div class="col-6 offset-3">
-       
         <form action="/winebatches/<%=winebatch.wID%>?_method=PUT" method="POST" novalidate class="validated-form">
             <h1 class> Edit Wine Batch</h1>
             <div class="card">
                 <div class="card-header">
+          
             <div class="mb-3">
+               
                 <label class="form-label" for="batch_name">Batch Name</label>
                 <input class="form-control" type="text" id="batch_name" name="winebatch[batch_name]" value="<%= winebatch.batch_name %>" required>
             </div>
@@ -22,7 +23,7 @@
                 <div class="input-group">
                     <span class="input-group-text" id="num_bottles-label">#</span>
                     <input type="text" class="form-control" id="num_bottles" placeholder="0" aria-label="num_bottles"
-                        aria-describedby="num_bottles-label" name="winebatch[num_bottles]" value="<%= winebatch.num_bottles %>" 
+                        aria-describedby="num_bottles-label" name="winebatch[num_bottles]" value="<%= winebatch.num_bottles %>" >
                 </div>
             </div>
             <div class="mb-3">
@@ -71,7 +72,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="comments">Comments</label>
-                <textarea class="form-control" type="text" id="comments" name="winebatch[comments]"><%= winebatch.comments %></textarea>
+                <textarea class="form-control" type="text" id="comments" name="winebatch[comments]"value =" <%= winebatch.comments %>"></textarea>
             </div>
             <div class="mb-3">
                 <button class="btn float-right btn_add">Edit Wine Batch</button>

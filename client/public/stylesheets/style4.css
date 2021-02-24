@@ -1,16 +1,23 @@
 html,body{
-    background-image: url('https://wallpaperaccess.com/full/3840934.jpg');
+    background-image: url(photos/red-wine.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     height: 100%;
     font-family: 'Numans', sans-serif;
+    color: white;
+    background-color: black;
+    background-attachment: scroll;
+    scroll-behavior: smooth;
+    overflow:auto;
+
     }
-    
+
+
     .container{
     height: 100%;
     padding-left: 300px;
-
     align-content: center;
+    overflow: auto;
     }
     
     .card{
@@ -19,8 +26,9 @@ html,body{
     margin-top: auto;
     margin-bottom: auto;
     width: 400px;
-    background-color: rgba(0,0,0,0.5) !important;
+    background-color: #8b0000 !important;
     color: white;
+    font-weight: bold;
     }
     
     
@@ -57,7 +65,7 @@ html,body{
     margin-top: 15px;
     color: white;
     font-weight: bold;
-    background-color: #8b0000;
+    background-color: black;
     width: 200px;
     }
     
