@@ -2,11 +2,15 @@
 html,body{
     background-image: url('https://www.teahub.io/photos/full/173-1734356_1920x1080-red-black-circular-gradient-destop-wallpaper-black.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     height: 100%;
     font-family: 'Numans', sans-serif;
     color: white;
-    }
+    background-color: black;
+    background-attachment: scroll;
+    scroll-behavior: smooth;
+    overflow: auto;
+}
     h1{
         text-align: center;
         color: white;
