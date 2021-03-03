@@ -28,16 +28,24 @@
                 <input class="form-control" type="text" id="style" name="winebatch[style]">
             </div>
             <div class="mb-3">
-                <label class="form-label" for="alcohol">Alcohol</label>
-                <input class="form-control" type="text" id="alcohol" name="winebatch[alcohol]">
+                <label class="form-label" fAlcohol">Alcohol</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="alcohol" placeholder="0" aria-label="alcohol"
+                        aria-describedby="alcohol-label" name="winebatch[alcohol]">
+                    <span class="input-group-text" id="alcohol-label">%</span>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="ava">American Viticulture Area</label>
                 <input class="form-control" type="text" id="ava" name="winebatch[ava]">
             </div>
             <div class="mb-3">
-                <label class="form-label" for="acidity">Acidity</label>
-                <input class="form-control" type="text" id="acidity" name="winebatch[acidity]">
+                <label class="form-label" fAcidity">Acidity</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="acidity" placeholder="0" aria-label="acidity"
+                        aria-describedby="acidity-label" name="winebatch[acidity]">
+                    <span class="input-group-text" id="acidity-label">PH</span>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="grape_variety">Grape Variety</label>
@@ -49,23 +57,35 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="harvest_date">Harvest Date</label>
-                <input class="form-control" type="text" id="harvest_date" name="winebatch[harvest_date]">
+                <input class="form-control" type="text" id="harvest_date" placeholder="MM/DD/YYYY" name="winebatch[harvest_date]">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="bottle_date">Bottle Date</label>
-                <input class="form-control" type="text" id="bottle_date" name="winebatch[bottle_date]">
+                <input class="form-control" type="text" id="bottle_date" placeholder="MM/DD/YYYY" name="winebatch[bottle_date]">
             </div>
             <div class="mb-3">
-                <label class="form-label" for="avg_sunshine">Average Sunshine</label>
-                <input class="form-control" type="text" id="avg_sunshine" name="winebatch[avg_sunshine]">
+                <label class="form-label" fAvgSunshine">Average Sunshine</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="avgSunshine" placeholder="0" aria-label="avgSunshine"
+                        aria-describedby="avgSunshine-label" name="winebatch[avgSunshine]">
+                    <span class="input-group-text" id="avgSunshine-label">hrs</span>
+                </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="avg_temp">Average Temperature</label>
-                <input class="form-control" type="text" id="avg_temp" name="winebatch[avg_temp]">
+                <label class="form-label" fAvgTemp">Average Temperature</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="avgTemp" placeholder="0" aria-label="avgTemp"
+                        aria-describedby="avgTemp-label" name="winebatch[avgTemp]">
+                    <span class="input-group-text" id="avgTemp-label">°</span>
+                </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="tannins">Tannins</label>
-                <input class="form-control" type="text" id="tannins" name="winebatch[tannins]">
+                <label class="form-label" fTannins">Tannins</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="tannins" placeholder="0" aria-label="tannins"
+                        aria-describedby="tannins-label" name="winebatch[tannins]">
+                    <span class="input-group-text" id="tannins-label">g/L</span>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="comments">Comments</label>
