@@ -134,7 +134,7 @@
 <script src="/javascripts/qrcode.js"></script>
 <script>
 	let myModal = new bootstrap.Modal(document.getElementById("qrCodeModal"));
-    let qrcString = "http://localhost:8080/winebatches/custview?a=<%=winebatch.address%>"
+    let qrcString = "http://localhost:3000/home?a=<%=winebatch.address%>"
 	let qrcode = new QRCode(document.getElementById("qrCodeOutput"), {
 		width: 400,
 		height: 400,

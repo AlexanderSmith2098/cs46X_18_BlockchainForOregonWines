@@ -7,10 +7,13 @@
 <a href="/winebatches/comp"><div class ="card3">View Completed Winebatches</div></a>
 
 <br>
-<% let i = 0 %> <% while (i < winebatches.length) { %> <%let j = 1;%>
+<%let count = 0;%>
+<%let placement = true;%>
 <div class="row">
-    <% while (j <=3) { %>
+<% let i = 0 %> <% while (i < winebatches.length) { %> 
     <% if (i <winebatches.length) {%> 
+		<% if (winebatches[i].status == "in-progress") {%> 
+			<%count += 1;%>
 	<div class="col-md-3">
 		<div class="card h-500 mb-3">
 			<div class="card">
@@ -25,7 +28,15 @@
 		</div>
 		</div>
     </div>
-    <% } %> 
-    <% i += 1; %> <% j += 1; %> <% } %> <% j = 1 %>
-</div>
+    <% } %> <% } %> 
+
+    <% i += 1; %>   
+	<% if (count == 3){%>
+		<%count= 0;%>
+		</div>
+		<div class="row">
+	<% } %> 
+	<% if (i == winebatches.length){%>
+		</div>
+		<% } %> 
 <% } %>
