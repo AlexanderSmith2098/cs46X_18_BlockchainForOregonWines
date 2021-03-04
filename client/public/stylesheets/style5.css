@@ -1,15 +1,19 @@
 html,body{
     background-image: url('https://wallpaperaccess.com/full/468014.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     height: 100%;
     font-family: 'Numans', sans-serif;
     color: white;
+    background-color: black;
+    background-attachment: scroll;
+    scroll-behavior: smooth;
+    overflow: auto;
     }
     
     .container{
     height: 100%;
-    padding-left: 300px;
+    padding-left: 200px;
     align-content: center;
     }
     
