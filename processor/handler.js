@@ -17,27 +17,6 @@ class Handler extends TransactionHandler {
 	constructor() {
 		super(TP_FAMILY, [TP_VERSION], [TP_NAMESPACE]);
 	}
-	// Properties of `txn`:
-	// - txn.payload: the encoded payload sent from your client
-	// - txn.header: the decoded TransactionHeader for this transaction
-	// - txn.signature: the hex signature of the header
-
-	//  Methods of `context`:
-	//    - context.getState(addresses): takes an array of addresses and returns
-	//      a Promise which will resolve with the requested state. The state
-	//      object will have keys which are addresses, and values that are encoded
-	//      state resources.
-	//    - context.setState(updates): takes an update object and returns a
-	//      Promise which will resolve with an array of the successfully
-	//      updated addresses. The updates object should have keys which are
-	//      addresses, and values which are encoded state resources.
-	//    - context.deleteState(addresses): deletes the state for the passed
-	//      array of state addresses. Only needed if attempting the extra credit.
-
-	// properties of payload:
-	// payload.action = what we want to do with payload
-	// payload.name = maybe name of winery?
-	// payload value = {wine batch data, I guess}
 	apply(txn, context) {
 		let payload = null;
 		try {

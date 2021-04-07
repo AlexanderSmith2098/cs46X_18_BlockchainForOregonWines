@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate') %>
+<h1>Change Password</h1>
+<form action="/passchan" method="POST" class="validated-form" novalidate>
+	<div class="mb-3">
+		<label class="form-label" for="Opassword">Enter Old Password</label>
+		<input
+			class="form-control"
+			type="password"
+			id="Opassword"
+			name="Opassword"
+			required
+		/>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" for="Npassword">Enter New Password</label>
+		<input
+			class="form-control"
+			type="password"
+			id="Npassword"
+			name="Npassword"
+			required
+		/>
+    </div>
+    <div class="mb-3">
+		<label class="form-label" for="NpasswordAg">Enter New Password Again</label>
+		<input
+			class="form-control"
+			type="password"
+			id="NpasswordAg"
+			name="NpasswordAg"
+			required
+		/>
+	</div>
+	<button class="btn-success">Submit</button>
+</form>

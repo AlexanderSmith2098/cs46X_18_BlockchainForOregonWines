@@ -1,0 +1,78 @@
+<% layout('layouts/boilerplate') %>
+<form action="/register" method="POST" class="validated-form" novalidate>
+	<body>
+		<div class="container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card">
+					<div class="card-header">
+						<h3>New User</h3>
+					</div>
+					<div class="card-body">
+						<form>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="User Name" name="username">
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="email" class="form-control" placeholder="Email" name="email">
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="password" class="form-control" placeholder="Password" name="password">
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="First Name" name="firstname">
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="Last Name" name="lastname">
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="Address" name="address">
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="City" name="city">
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="Zip" name="zip">
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="State" name="state">
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="Phone Number" name="phone">
+								
+							</div>
+							<button type="submit" class="btn btn-primary">Register</button>
+						</form>
+                        <p>Already have an account? <a href="/login">Login here.</a></p>
+				</div>
+			</div>
+		</div>
+		</body>
+	
+</form>

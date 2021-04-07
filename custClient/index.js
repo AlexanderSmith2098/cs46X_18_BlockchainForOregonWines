@@ -12,9 +12,12 @@ const custUser = require("./models/users");
 const catchAsync = require("./utils/catchAsync");
 const axios = require("axios").default;
 
+const usersRoutes = require("./routes/users");
+const wineRoutes = require("./routes/wine");
+
 const API_URL = "http://localhost:8008";
 
-mongoose.connect("mongodb://192.168.112.1:27017/oregon-wines", {
+mongoose.connect("mongodb://172.25.96.1:27017/oregon-wines", {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
@@ -58,7 +61,6 @@ passport.use(new LocalStrategy(custUser.authenticate()));
 passport.serializeUser(custUser.serializeUser());
 passport.deserializeUser(custUser.deserializeUser());
 
-
 app.use((req, res, next) => {
 	res.locals.currentUser = req.user;
 	res.locals.success = req.flash("success");
@@ -66,12 +68,38 @@ app.use((req, res, next) => {
 	next();
 });
 
+app.use("/", usersRoutes);
+app.use("/wine", wineRoutes);
+
 app.get(
-	"/home",
+	"/view",
 	catchAsync(async (req, res) => {
-		const address = req.query.a;
-		let winebatch = await fetchBatch(address);
-		res.render("home", { winebatch });
+		if (req.query.a !== undefined) {
+			const address = req.query.a;
+			let winebatch = await fetchBatch(address);
+			res.render("wine/view", { winebatch });
+		} else {
+			let winebatch = {
+				wID: "Blah",
+				status: "Blah",
+				batch_name: "Blah",
+				wine_name: "Blah",
+				num_bottles: "Blah",
+				style: "Blah",
+				alcohol: "Blah",
+				ava: "Blah",
+				acidity: "Blah",
+				grape_variety: "Blah",
+				harvest_loc: "Blah",
+				harvest_date: "Blah",
+				bottle_date: "Blah",
+				avg_sunshine: "Blah",
+				avg_temp: "Blah",
+				tannins: "Blah",
+				comments: "Blah",
+			};
+			res.render("wine/view", { winebatch });
+		}
 	})
 );
 
