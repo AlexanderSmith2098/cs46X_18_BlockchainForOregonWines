@@ -4,6 +4,7 @@ const passport = require("passport");
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/users");
 const { isLoggedIn} = require("../middleware");
+const nodemailer = require("nodemailer");
 
 router.get("/register", (req, res) => {
 	res.render("users/register");
@@ -135,5 +136,18 @@ router.get("/logout", (req, res) => {
 	req.flash("success", "Logged Out");
 	res.redirect("/login");
 });
+
+// be sure npm install nodemailer
+async function main() {
+  let testAccount = await nodemailer.createTestAccount();
+	let transporter = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
+    port: 587,
+    secure: false,
+    auth: {
+      user: testAccount.user,
+      pass: testAccount.pass,
+    },
+  });
 
 module.exports = router;
