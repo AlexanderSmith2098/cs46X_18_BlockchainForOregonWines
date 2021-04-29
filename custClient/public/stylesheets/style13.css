@@ -24,16 +24,7 @@ html,body{
         background-color: rgba(51, 51, 51, 0.809);
     }
     
-    .inline-buttons .one-third {
-        text-align: center;
-    }
     
-    
-        .inline-buttons .one-third {
-            width: 100%;
-            margin: 20px;
-        }
-        
     
     .card-header h3{
     color:black;

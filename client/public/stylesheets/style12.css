@@ -1,5 +1,5 @@
 html,body{
-    background-image: url('https://wallpaperaccess.com/full/468014.jpg');
+    background-image: url('https://wallpaperaccess.com/full/751050.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -54,26 +54,25 @@ html,body{
     margin-left: 15px;
     margin-right: 5px;
     }
-    .button{
-        background-color: #8b0000;
-    }
+    
     .btn_login{
-       
-        
-        color: white;
-        font-weight: bold;
-        background-color: #80690e;
-        }
-        
-        .btn_login:hover{
-        color: black;
-        background-color: white;
-        }
-        
-        .links{
-        color: white;
-        }
-        
-        .links a{
-        margin-left: 4px;
-        }
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+    background-color: #8b0000;
+    width: 100px;
+    }
+    
+    .btn_login:hover{
+    color: black;
+    background-color: white;
+    }
+    
+    .links{
+    color: white;
+    }
+    
+    .links a{
+    margin-left: 4px;
+    }
