@@ -28,19 +28,61 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="style">Style</label>
-                <input class="form-control" type="text" id="style" name="winebatch[style]" value="<%= winebatch.style %>">
+                <input list="styles" name="winebatch[style]" id="style">
+                <datalist id="styles">
+					<option value="Sparkling Wine">
+					<option value="Light-Bodied White Wine">
+					<option value="Full-Bodied WHite Wine">
+					<option value="Aromatic (sweet) White Wine">
+					<option value="Rosé Wine">
+					<option value="Light-Bodied Red Wine">
+					<option value="Medium-Bodied Red Wine">
+					<option value="Full-Bodied Red Wine">
+					<option value="Dessert Wine">
+                </datalist>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="alcohol">Alcohol</label>
-                <input class="form-control" type="text" id="alcohol" name="winebatch[alcohol]" value="<%= winebatch.alcohol %>">
+                <label class="form-label" fAlcohol">Alcohol</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="alcohol" placeholder="0" aria-label="alcohol"
+                        aria-describedby="alcohol-label" name="winebatch[alcohol]" value="<%= winebatch.alcohol %>" 
+                    <span class="input-group-text" id="alcohol-label">%</span>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="ava">American Viticulture Area</label>
-                <input class="form-control" type="text" id="ava" name="winebatch[ava]" value="<%= winebatch.ava %>">
+				<input list="avas" name="winebatch[ava]" id="ava">
+                <datalist id="avas">
+					<option value="Applegate Valley AVA">
+					<option value="Chehalem Mountains AVA">
+					<option value="Columbia Gorge AVA">
+					<option value="Columbia Valley AVA">
+					<option value="Dundee Hills AVA">
+					<option value="Elkton Oregon AVA">
+					<option value="Eola-Amity Hills AVA">
+					<option value="Laurelwood District AVA">
+					<option value="McMinnville AVA">
+					<option value="Red Hill Douglas County, Oregon AVA">
+					<option value="Ribbon Ridge AVA">
+					<option value="The Rocks District of Milton-Freewater AVA">
+					<option value="Rogue Valley AVA">
+					<option value="Snake River Valley AVA">
+					<option value="Southern Oregon AVA">
+					<option value="Tualatin Hills AVA">
+					<option value="Umpqua Valley AVA">
+					<option value="Van Duzer Corridor AVA">
+					<option value="Walla Walla Valley AVA">
+					<option value="Willamette Valley AVA">
+					<option value="Yamhill-Carlton AVA">
+                </datalist>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="acidity">Acidity</label>
-                <input class="form-control" type="text" id="acidity" name="winebatch[acidity]" value="<%= winebatch.acidity %>">
+                <label class="form-label" fAcidity">Acidity</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="acidity" placeholder="0" aria-label="acidity"
+                        aria-describedby="acidity-label" name="winebatch[acidity]" value="<%= winebatch.acidity %>" 
+                    <span class="input-group-text" id="acidity-label">PH</span>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="grape_variety">Grape Variety</label>
@@ -52,23 +94,35 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="harvest_date">Harvest Date</label>
-                <input class="form-control" type="text" id="harvest_date" name="winebatch[harvest_date]" value="<%= winebatch.harvest_date %>">
+                <input class="form-control" type="date" id="harvest_date" name="winebatch[harvest_date]" value="<%= winebatch.harvest_date %>">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="bottle_date">Bottle Date</label>
-                <input class="form-control" type="text" id="bottle_date" name="winebatch[bottle_date]" value="<%= winebatch.bottle_date %>">
+                <input class="form-control" type="date" id="bottle_date" name="winebatch[bottle_date]" value="<%= winebatch.bottle_date %>">
             </div>
             <div class="mb-3">
-                <label class="form-label" for="avg_sunshine">Average Sunshine</label>
-                <input class="form-control" type="text" id="avg_sunshine" name="winebatch[avg_sunshine]" value="<%= winebatch.avg_sunshine %>">
+                <label class="form-label" fAvgSunshine">Average Sunshine</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="avgSunshine" placeholder="0" aria-label="avgSunshine"
+                        aria-describedby="avgSunshine-label" name="winebatch[avgSunshine]" value="<%= winebatch.avgSunshine %>" 
+                    <span class="input-group-text" id="avgSunshine-label">hrs</span>
+                </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="avg_temp">Average Temperature</label>
-                <input class="form-control" type="text" id="avg_temp" name="winebatch[avg_temp]" value="<%= winebatch.avg_temp %>">
+                <label class="form-label" fAvgTemp">Average Temperature</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="avgTemp" placeholder="0" aria-label="avgTemp"
+                        aria-describedby="avgTemp-label" name="winebatch[avgTemp]" value="<%= winebatch.avgTemp %>" 
+                    <span class="input-group-text" id="avgTemp-label">°</span>
+                </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="tannins">Tannins</label>
-                <input class="form-control" type="text" id="tannins" name="winebatch[tannins]" value="<%= winebatch.tannins %>">
+                <label class="form-label" fTannins">Tannins</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="tannins" placeholder="0" aria-label="tannins"
+                        aria-describedby="tannins-label" name="winebatch[tannins]" value="<%= winebatch.tannins %>" 
+                    <span class="input-group-text" id="tannins-label">g/L</span>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="comments">Comments</label>
