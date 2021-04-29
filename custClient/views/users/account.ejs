@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+	<div class="col-6 offset-3">
+		<div class="card mb-3">
+			<div class="card-body">
+				<h3 class="card-title"><%= user.firstname%> <%= user.lastname%></h3>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><b>Email: </b><%= user.email%></li>
+				<li class="list-group-item"><b>Address: </b><%= user.address%></li>
+                <li class="list-group-item"><b>City: </b><%= user.city%></li>
+                <li class="list-group-item"><b>Zip Code: </b><%= user.zip%></li>
+                <li class="list-group-item"><b>State: </b><%= user.state%></li>
+                <li class="list-group-item"><b>Phone Number: </b><%= user.phone%></li>
+				
+			</ul>
+			<a href="/passchan" class="nav-link">Change Password</a>
+			<a href="/account/edit" class="nav-link">Change Account Info</a>
+            <a href="/logout" class="nav-link">Logout</a>
+		</div>
+	</div>
+</div>

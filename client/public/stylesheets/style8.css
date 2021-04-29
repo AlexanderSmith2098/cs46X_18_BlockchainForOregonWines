@@ -1,15 +1,20 @@
 html,body{
     background-image: url('https://images-us-prod.cms.commerce.dynamics.com/cms/api/mhtmhnbtbn/imageFileData/MA2qTC?ver=f312&w=1600&h=700&q=80&m=6&f=jpg');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     height: 100%;
     font-family: 'Numans', sans-serif;
+    color: white;
+    background-color: black;
+    background-attachment: scroll;
+    scroll-behavior: smooth;
+    overflow:auto;
     }
     
     .container{
         
     height: 100%;
-    padding-left: 300px;
+    padding-left: 100px;
     align-content: center;
     text-emphasis-color: white;
     color: white;

@@ -1,0 +1,46 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+	<div class="col-6 offset-3">
+		<div class="card mb-3">
+			<div class="card-body">
+				<h3 class="card-title"><%= winebatch.wine_name%></h3>
+				<p class="card-text"><%= winebatch.comments%></p>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><b>Style: </b><%= winebatch.style%></li>
+				<li class="list-group-item"><b>Alcohol: </b><%= winebatch.alcohol%></li>
+				<li class="list-group-item">
+					<b>American Viticulture Area: </b><%= winebatch.ava%>
+				</li>
+				<li class="list-group-item"><b>Acidity: </b><%= winebatch.acidity%></li>
+				<li class="list-group-item">
+					<b>Grape Variety: </b><%= winebatch.grape_variety%>
+				</li>
+				<li class="list-group-item">
+					<b>Harvest Location: </b><%= winebatch.harvest_loc%>
+				</li>
+				<li class="list-group-item">
+					<b>Harvest Date: </b><%= winebatch.harvest_date%>
+				</li>
+				<li class="list-group-item">
+					<b>Bottle Date: </b><%= winebatch.bottle_date%>
+				</li>
+				<li class="list-group-item">
+					<b>Average Sunshine: </b><%= winebatch.avg_sunshine%>
+				</li>
+				<li class="list-group-item">
+					<b>Average Temperature: </b><%= winebatch.avg_temp%>
+				</li>
+				<li class="list-group-item"><b>Tannins: </b><%= winebatch.tannins%></li>
+			</ul>
+			<div class="card-body">
+				<form action="/login" method="GET">
+					<button class="btn btn-success">Login</button>
+				</form>
+				<form action="/register" method="GET">
+					<button class="btn btn-danger">Register</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

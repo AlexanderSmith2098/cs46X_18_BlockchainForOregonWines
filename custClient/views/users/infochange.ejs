@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+    <div class="col-6 offset-3">
+        <form action="/account?_method=PATCH" method="POST" novalidate class="validated-form">
+            <h1 class> Edit Account Info</h1>
+            <div class="input-group form-group">
+								
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="email" class="form-control" placeholder="Email" name="email" value="<%= user.email %> " required>
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="Address" name="address" value="<%= user.address %> " required>
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="City" name="city" value="<%= user.city %> " required>
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="Zip" name="zip" value="<%= user.zip %> " required>
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="State" name="state" value="<%= user.state %> " required>
+								
+							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="text" class="form-control" placeholder="Phone Number" name="phone" value="<%= user.phone %> " required>
+								
+							</div>
+							<button type="submit" class="btn btn-primary">Edit Info</button>
+        </form>
+        
+    </div>
+    <a href="/viewaccount">Back to Account</a>
+</div>
+    </div>
+</div>

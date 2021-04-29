@@ -1,34 +1,43 @@
 <% layout('layouts/boilerplate') %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/style8.css">
 <div class="card2 ">
-<h1>Completed Wine Batches</h1>
-</div>
+<h1>In-progress Wine Batches</h1></div>
 
 
-<a href="/winebatches/"><div class ="card3">View in-progress Winebatches</div></a> 
+<a href="/winebatches"><div class ="card3">View in-progress wine batches</div></a>
+
 <br>
-<% let i = 0 %> <% while (i < winebatches.length) { %> <%let j = 1;%>
+<%let count = 0;%>
+<%let placement = true;%>
 <div class="row">
-    <% while (j <=3) { %>
-	<% if (i <winebatches.length) {%> 
+<% let i = 0 %> <% while (i < winebatches.length) { %> 
+    <% if (i <winebatches.length) {%> 
 		<% if (winebatches[i].status == "completed") {%> 
-	<div class="col-md-4">
-		<div class="card h-100 mb-6">
+			<%count += 1;%>
+	<div class="col-md-3">
+		<div class="card h-500 mb-3">
 			<div class="card">
 				<div class="card-header">
-
 				<h5 class="card-title">Batch Name: <%= winebatches[i].batch_name %></h5>
 				<h5 class="card-title">Wine Name: <%= winebatches[i].wine_name %></h5>
 				<p class="card-text"><%= winebatches[i].comments %></p>
 				<a class="btn btn_add" href="/winebatches/<%=winebatches[i].wID%>"
-					> View <%=winebatches[i].batch_name%></a
+					>View <%=winebatches[i].batch_name%></a
 				>
 				</div>
 			</div>	
 		</div>
-	</div>
+		</div>
+    </div>
+    <% } %> <% } %> 
+
+    <% i += 1; %>   
+	<% if (count == 3){%>
+		<%count= 0;%>
+		</div>
+		<div class="row">
 	<% } %> 
-    <% } %> 
-    <% i += 1; %> <% j += 1; %> <% } %> <% j = 1 %>
-</div>
+	<% if (i == winebatches.length){%>
+		</div>
+		<% } %> 
 <% } %>

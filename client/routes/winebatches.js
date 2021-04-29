@@ -149,6 +149,7 @@ router.put(
 	"/:id",
 	isLoggedIn,
 	catchAsync(async (req, res) => {
+		req.body.winebatch.status = "in-progress"
 		let payload = create_payload(
 			"UPDATE_BATCH",
 			req.body.winebatch,
