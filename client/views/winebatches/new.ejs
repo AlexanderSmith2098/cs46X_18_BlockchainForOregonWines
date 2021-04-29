@@ -25,7 +25,18 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="style">Style</label>
-                <input class="form-control" type="text" id="style" name="winebatch[style]">
+                <input list="styles" name="winebatch[style]" id="style">
+                <datalist id="styles">
+					<option value="Sparkling Wine">
+					<option value="Light-Bodied White Wine">
+					<option value="Full-Bodied WHite Wine">
+					<option value="Aromatic (sweet) White Wine">
+					<option value="Rosé Wine">
+					<option value="Light-Bodied Red Wine">
+					<option value="Medium-Bodied Red Wine">
+					<option value="Full-Bodied Red Wine">
+					<option value="Dessert Wine">
+                </datalist>
             </div>
             <div class="mb-3">
                 <label class="form-label" fAlcohol">Alcohol</label>

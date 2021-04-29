@@ -28,7 +28,18 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="style">Style</label>
-                <input class="form-control" type="text" id="style" name="winebatch[style]" value="<%= winebatch.style %>">
+                <input list="styles" name="winebatch[style]" id="style">
+                <datalist id="styles">
+					<option value="Sparkling Wine">
+					<option value="Light-Bodied White Wine">
+					<option value="Full-Bodied WHite Wine">
+					<option value="Aromatic (sweet) White Wine">
+					<option value="Rosé Wine">
+					<option value="Light-Bodied Red Wine">
+					<option value="Medium-Bodied Red Wine">
+					<option value="Full-Bodied Red Wine">
+					<option value="Dessert Wine">
+                </datalist>
             </div>
             <div class="mb-3">
                 <label class="form-label" fAlcohol">Alcohol</label>
@@ -40,7 +51,30 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="ava">American Viticulture Area</label>
-                <input class="form-control" type="text" id="ava" name="winebatch[ava]" value="<%= winebatch.ava %>">
+				<input list="avas" name="winebatch[ava]" id="ava">
+                <datalist id="avas">
+					<option value="Applegate Valley AVA">
+					<option value="Chehalem Mountains AVA">
+					<option value="Columbia Gorge AVA">
+					<option value="Columbia Valley AVA">
+					<option value="Dundee Hills AVA">
+					<option value="Elkton Oregon AVA">
+					<option value="Eola-Amity Hills AVA">
+					<option value="Laurelwood District AVA">
+					<option value="McMinnville AVA">
+					<option value="Red Hill Douglas County, Oregon AVA">
+					<option value="Ribbon Ridge AVA">
+					<option value="The Rocks District of Milton-Freewater AVA">
+					<option value="Rogue Valley AVA">
+					<option value="Snake River Valley AVA">
+					<option value="Southern Oregon AVA">
+					<option value="Tualatin Hills AVA">
+					<option value="Umpqua Valley AVA">
+					<option value="Van Duzer Corridor AVA">
+					<option value="Walla Walla Valley AVA">
+					<option value="Willamette Valley AVA">
+					<option value="Yamhill-Carlton AVA">
+                </datalist>
             </div>
             <div class="mb-3">
                 <label class="form-label" fAcidity">Acidity</label>
@@ -60,11 +94,11 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="harvest_date">Harvest Date</label>
-                <input class="form-control" type="text" id="harvest_date" placeholder="MM/DD/YYYY" name="winebatch[harvest_date]" value="<%= winebatch.harvest_date %>">
+                <input class="form-control" type="date" id="harvest_date" name="winebatch[harvest_date]" value="<%= winebatch.harvest_date %>">
             </div>
             <div class="mb-3">
                 <label class="form-label" for="bottle_date">Bottle Date</label>
-                <input class="form-control" type="text" id="bottle_date" placeholder="MM/DD/YYYY" name="winebatch[bottle_date]" value="<%= winebatch.bottle_date %>">
+                <input class="form-control" type="date" id="bottle_date" name="winebatch[bottle_date]" value="<%= winebatch.bottle_date %>">
             </div>
             <div class="mb-3">
                 <label class="form-label" fAvgSunshine">Average Sunshine</label>
