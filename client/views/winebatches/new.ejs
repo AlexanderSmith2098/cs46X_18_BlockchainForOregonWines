@@ -6,7 +6,7 @@
         <form action="/winebatches" method="POST" novalidate class="validated-form">
             <h1>New Wine Batch</h1>
             <div class="card">
-        <div class="card-header">
+		<div class="card-header">
             <div class="mb-3">
                 <label class="form-label" for="batch_name">Batch Name</label>
                 <input class="form-control" type="text" id="batch_name" name="winebatch[batch_name]" required>
@@ -40,17 +40,14 @@
                   </select>
                 </div>
             </div>
-            
 
             <div class="mb-3">
-
-
                 <label class="form-label" fAlcohol">Alcohol</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="alcohol" placeholder="0" aria-label="alcohol"
-                        aria-describedby="alcohol-label" name="winebatch[alcohol]" value="<%= winebatch.alcohol %>" >
-                        <span class="input-group-text" id="alcohol-label">%</span>
-                    </div>
+                        aria-describedby="alcohol-label" name="winebatch[alcohol]">
+                    <span class="input-group-text" id="alcohol-label">%</span>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="ava">American Viticulture Area</label>
@@ -81,6 +78,7 @@
                   </select>
                 </div>
             </div>
+
             <div class="mb-3">
                 <label class="form-label" fAcidity">Acidity</label>
                 <div class="input-group">
