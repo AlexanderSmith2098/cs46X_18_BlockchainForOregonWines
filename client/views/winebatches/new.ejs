@@ -6,7 +6,7 @@
         <form action="/winebatches" method="POST" novalidate class="validated-form">
             <h1>New Wine Batch</h1>
             <div class="card">
-		<div class="card-header">
+        <div class="card-header">
             <div class="mb-3">
                 <label class="form-label" for="batch_name">Batch Name</label>
                 <input class="form-control" type="text" id="batch_name" name="winebatch[batch_name]" required>
@@ -24,54 +24,62 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="style">Style</label>
-                <input list="styles" name="winebatch[style]" id="style">
-                <datalist id="styles">
-					<option value="Sparkling Wine">
-					<option value="Light-Bodied White Wine">
-					<option value="Full-Bodied WHite Wine">
-					<option value="Aromatic (sweet) White Wine">
-					<option value="Rosé Wine">
-					<option value="Light-Bodied Red Wine">
-					<option value="Medium-Bodied Red Wine">
-					<option value="Full-Bodied Red Wine">
-					<option value="Dessert Wine">
-                </datalist>
+                <label class="form-label" for="style">Style</label> 
+                <div class="input-group"> 
+                    <select class="custom-select"  style="width:400px; height: 40px;" id="styles" >
+                    <option selected>Choose...</option>
+                    <option value="Sparkling Wine">Sparkling Wine</option>
+                    <option value="Light-Bodied White Wine">Light-Bodied White Wine</option>
+                    <option value="Full-Bodied WHite Wine">Full-Bodied WHite Wine</option>
+                    <option value="Aromatic (sweet) White Wine">Aromatic (sweet) White Wine</option>
+                    <option value="Rosé Wine">Rosé Wine</option>
+                    <option value="Light-Bodied Red Wine">Light-Bodied Red Wine</option>
+                    <option value="Medium-Bodied Red Wine">Medium-Bodied Red Wine</option>
+                    <option value="Full-Bodied Red Wine">Full-Bodied Red Wine</option>
+                    <option value="Dessert Wine">Dessert Wine</option>
+                  </select>
+                </div>
             </div>
+            
+
             <div class="mb-3">
+
+
                 <label class="form-label" fAlcohol">Alcohol</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="alcohol" placeholder="0" aria-label="alcohol"
-                        aria-describedby="alcohol-label" name="winebatch[alcohol]">
-                    <span class="input-group-text" id="alcohol-label">%</span>
-                </div>
+                        aria-describedby="alcohol-label" name="winebatch[alcohol]" value="<%= winebatch.alcohol %>" >
+                        <span class="input-group-text" id="alcohol-label">%</span>
+                    </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="ava">American Viticulture Area</label>
-                <input list="avas" name="winebatch[ava]" id="ava">
-                <datalist id="avas">
-					<option value="Applegate Valley AVA">
-					<option value="Chehalem Mountains AVA">
-					<option value="Columbia Gorge AVA">
-					<option value="Columbia Valley AVA">
-					<option value="Dundee Hills AVA">
-					<option value="Elkton Oregon AVA">
-					<option value="Eola-Amity Hills AVA">
-					<option value="Laurelwood District AVA">
-					<option value="McMinnville AVA">
-					<option value="Red Hill Douglas County, Oregon AVA">
-					<option value="Ribbon Ridge AVA">
-					<option value="The Rocks District of Milton-Freewater AVA">
-					<option value="Rogue Valley AVA">
-					<option value="Snake River Valley AVA">
-					<option value="Southern Oregon AVA">
-					<option value="Tualatin Hills AVA">
-					<option value="Umpqua Valley AVA">
-					<option value="Van Duzer Corridor AVA">
-					<option value="Walla Walla Valley AVA">
-					<option value="Willamette Valley AVA">
-					<option value="Yamhill-Carlton AVA">
-                </datalist>
+                <div class="input-group"> 
+                    <select class="custom-select"  style="width:400px; height: 40px;" id="avas" >
+                    <option selected>Choose...</option>
+                    <option value="Applegate Valley AVA">Applegate Valley AVA</option>
+                        <option value="Chehalem Mountains AVA">Chehalem Mountains AVA</option>
+                        <option value="Columbia Gorge AVA">Columbia Gorge AVA</option>
+                        <option value="Columbia Valley AVA">Columbia Valley AVA</option>
+                        <option value="Dundee Hills AVA">Dundee Hills AVA</option>
+                        <option value="Elkton Oregon AVA">Elkton Oregon AVA</option>
+                        <option value="Eola-Amity Hills AVA">Eola-Amity Hills AVA</option>
+                        <option value="Laurelwood District AVA">Laurelwood District AVA</option>
+                        <option value="McMinnville AVA">McMinnville AVA</option>
+                        <option value="Red Hill Douglas County, Oregon AVA">Red Hill Douglas County, Oregon AVA</option>
+                        <option value="Ribbon Ridge AVA">Ribbon Ridge AVA</option>
+                        <option value="The Rocks District of Milton-Freewater AVA">The Rocks District of Milton-Freewater AVA</option>
+                        <option value="Rogue Valley AVA">Rogue Valley AVA</option>
+                        <option value="Snake River Valley AVA">Snake River Valley AVA</option>
+                        <option value="Southern Oregon AVA">Southern Oregon AVA</option>
+                        <option value="Tualatin Hills AVA">Tualatin Hills AVA</option>
+                        <option value="Umpqua Valley AVA">Umpqua Valley AVA</option>
+                        <option value="Van Duzer Corridor AVA">Van Duzer Corridor AVA</option>
+                        <option value="Walla Walla Valley AVA">Walla Walla Valley AVA</option>
+                        <option value="Willamette Valley AVA">Willamette Valley AVA</option>
+                        <option value="Yamhill-Carlton AVA">Yamhill-Carlton AVA</option>
+                  </select>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" fAcidity">Acidity</label>
