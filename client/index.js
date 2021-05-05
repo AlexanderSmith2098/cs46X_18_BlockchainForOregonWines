@@ -13,7 +13,7 @@ const User = require('./models/users');
 const usersRoutes= require('./routes/users');
 const winebatchesRoutes = require('./routes/winebatches');
 
-mongoose.connect("mongodb://localhost:27017/oregon-wines", {
+mongoose.connect("mongodb://172.18.80.1:27017/oregon-wines", {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,

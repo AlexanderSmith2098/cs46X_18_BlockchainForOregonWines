@@ -17,7 +17,7 @@ const wineRoutes = require("./routes/wine");
 
 const API_URL = "http://localhost:8008";
 
-mongoose.connect("mongodb://172.25.96.1:27017/oregon-wines", {
+mongoose.connect("mongodb://172.18.80.1:27017/oregon-wines", {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
@@ -75,6 +75,8 @@ app.get(
 	"/view",
 	catchAsync(async (req, res) => {
 		if (req.query.a !== undefined) {
+			console.log("test")
+			console.log(req.query.a)
 			const address = req.query.a;
 			let winebatch = await fetchBatch(address);
 			res.render("wine/view", { winebatch });

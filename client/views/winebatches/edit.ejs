@@ -6,10 +6,8 @@
         <form action="/winebatches/<%=winebatch.wID%>?_method=PUT" method="POST" novalidate class="validated-form">
             <h1 class> Edit Wine Batch</h1>
             <div class="card">
-                <div class="card-header">
-          
+              
             <div class="mb-3">
-               
                 <label class="form-label" for="batch_name">Batch Name</label>
                 <input class="form-control" type="text" id="batch_name" name="winebatch[batch_name]" value="<%= winebatch.batch_name %>" required>
             </div>
@@ -18,7 +16,7 @@
                 <input class="form-control" type="text" id="wine_name" name="winebatch[wine_name]" value="<%= winebatch.wine_name %>">
             </div>
             <div class="mb-3">
-                <label class="form-label" fnumBottles">Number of Bottles</label>
+                <label class="form-label" for="num_bottles">Number of Bottles</label>
                 <div class="input-group">
                     <span class="input-group-text" id="num_bottles-label">#</span>
                     <input type="text" class="form-control" id="num_bottles" placeholder="0" aria-label="num_bottles"
@@ -27,7 +25,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="style">Style</label>
-                <input list="styles" name="winebatch[style]" id="style">
+                <input list="styles" value="<%= winebatch.style %>" name="winebatch[style]" id="style" >
                 <datalist id="styles">
 					<option value="Sparkling Wine">
 					<option value="Light-Bodied White Wine">
@@ -41,16 +39,16 @@
                 </datalist>
             </div>
             <div class="mb-3">
-                <label class="form-label" fAlcohol">Alcohol</label>
+                <label class="form-label" for="alcohol">Alcohol</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="alcohol" placeholder="0" aria-label="alcohol"
-                        aria-describedby="alcohol-label" name="winebatch[alcohol]" value="<%= winebatch.alcohol %>" 
+                        aria-describedby="alcohol-label" name="winebatch[alcohol]" value="<%= winebatch.alcohol %>">
                     <span class="input-group-text" id="alcohol-label">%</span>
                 </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="ava">American Viticulture Area</label>
-				<input list="avas" name="winebatch[ava]" id="ava">
+				<input list="avas" value="<%= winebatch.ava %>" name="winebatch[ava]" id="ava">
                 <datalist id="avas">
 					<option value="Applegate Valley AVA">
 					<option value="Chehalem Mountains AVA">
@@ -76,10 +74,10 @@
                 </datalist>
             </div>
             <div class="mb-3">
-                <label class="form-label" fAcidity">Acidity</label>
+                <label class="form-label" for="acidity">Acidity</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="acidity" placeholder="0" aria-label="acidity"
-                        aria-describedby="acidity-label" name="winebatch[acidity]" value="<%= winebatch.acidity %>" 
+                        aria-describedby="acidity-label" name="winebatch[acidity]" value="<%= winebatch.acidity %>" >
                     <span class="input-group-text" id="acidity-label">PH</span>
                 </div>
             </div>
@@ -100,41 +98,41 @@
                 <input class="form-control" type="date" id="bottle_date" name="winebatch[bottle_date]" value="<%= winebatch.bottle_date %>">
             </div>
             <div class="mb-3">
-                <label class="form-label" fAvgSunshine">Average Sunshine</label>
+                <label class="form-label" for="avg_sunshine">Average Sunshine</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="avgSunshine" placeholder="0" aria-label="avgSunshine"
-                        aria-describedby="avgSunshine-label" name="winebatch[avgSunshine]" value="<%= winebatch.avgSunshine %>" 
-                    <span class="input-group-text" id="avgSunshine-label">hrs</span>
+                    <input type="text" class="form-control" id="avg_sunshine" placeholder="0" aria-label="avg_sunshine"
+                        aria-describedby="avg_sunshine-label" name="winebatch[avg_sunshine]" value="<%= winebatch.avg_sunshine %>" />
+                    <span class="input-group-text" id="avg_sunshine-label">hrs</span>
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" fAvgTemp">Average Temperature</label>
+                <label class="form-label" for=avg_temp">Average Temperature</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="avgTemp" placeholder="0" aria-label="avgTemp"
-                        aria-describedby="avgTemp-label" name="winebatch[avgTemp]" value="<%= winebatch.avgTemp %>" 
-                    <span class="input-group-text" id="avgTemp-label">°</span>
+                    <input type="text" class="form-control" id="avg_temp" placeholder="0" aria-label="avg_temp"
+                        aria-describedby="avg_temp-label" name="winebatch[avg_temp]" value="<%= winebatch.avg_temp %>" />
+                    <span class="input-group-text" id="avg_temp-label">°</span>
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label" fTannins">Tannins</label>
+                <label class="form-label" for="tannins">Tannins</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="tannins" placeholder="0" aria-label="tannins"
-                        aria-describedby="tannins-label" name="winebatch[tannins]" value="<%= winebatch.tannins %>" 
+                        aria-describedby="tannins-label" name="winebatch[tannins]" value="<%= winebatch.tannins %>" >
                     <span class="input-group-text" id="tannins-label">g/L</span>
                 </div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="comments">Comments</label>
-                <textarea class="form-control" type="text" id="comments" name="winebatch[comments]"value =" <%= winebatch.comments %>"></textarea>
+                <textarea class="form-control" type="text" id="comments" name="winebatch[comments]"value =" <%= winebatch.comments %>"><%= winebatch.comments %></textarea>
             </div>
             <div class="mb-3">
                 <button class="btn float-right btn_add">Edit Wine Batch</button>
             </div>
+            </div>
+            
         </form>
         <button class="btn float-right btn_add">
         <a href="/winebatches/<%= winebatch.wID %>">Back to Selected Batch</a>
        </button>
-    </div>
-</div>
     </div>
 </div>

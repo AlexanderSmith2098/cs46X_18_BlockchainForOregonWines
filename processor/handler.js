@@ -85,7 +85,6 @@ const delete_batch = (context, address) => {
 
 const create_wineBatch = (payload) => {
 	let wineBatch = {
-
 		wID: payload.wID,
 		status: payload.value.status,
 		batch_name: payload.value.batch_name,
@@ -102,7 +101,7 @@ const create_wineBatch = (payload) => {
 		avg_sunshine: payload.value.avg_sunshine,
 		avg_temp: payload.value.avg_temp,
 		tannins: payload.value.tannins,
-		comments: payload.value.comments
+		comments: payload.value.comments,
 	};
 	console.log(wineBatch);
 	return wineBatch;

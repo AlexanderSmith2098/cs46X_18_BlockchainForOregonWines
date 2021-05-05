@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/style8.css">
 <div class="card2 ">
-<h1>In-progress Wine Batches</h1></div>
+<h1>Completed Wine Batches</h1></div>
 
 
 <a href="/winebatches"><div class ="card3">View in-progress wine batches</div></a>
@@ -24,13 +24,11 @@
 				<a class="btn btn_add" href="/winebatches/<%=winebatches[i].wID%>"
 					>View <%=winebatches[i].batch_name%></a
 				>
-				</div>
-			</div>	
+			</div>
 		</div>
 		</div>
     </div>
     <% } %> <% } %> 
-
     <% i += 1; %>   
 	<% if (count == 3){%>
 		<%count= 0;%>
