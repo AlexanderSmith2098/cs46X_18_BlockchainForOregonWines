@@ -1,6 +1,5 @@
 Open up a terminal (make sure you're in the root directory of the project) and type:
 docker volume create sawtoothMongo
-The above step shouldn't be necessary, but I can't figure out how to do this without first creating an external volume for mongodb
 Then (make sure you're in the root directory of the project), type in:
 docker-compose up --build -d
 This creates containers for a single node, the transaction processor, and a mongodb.
@@ -14,4 +13,4 @@ When you are finished coding/developing/whatever, simply type docker-down (it do
 
 Whenever you want to start everything up again, simply type:
 docker-compose up -d
-into a terminal.  It doesn't matter where the terminal is currently navigated to.
+into a terminal.  Both the UP and DOWN commands will work as long as you're in the directory (or a child directory) that contains the docker-compose.yaml
