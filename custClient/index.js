@@ -1,3 +1,4 @@
+// This page badly needs to be refactored.  It is similar to the index page for the winery client.  It contains routes related to rendering wine information, though.
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -15,9 +16,11 @@ const axios = require("axios").default;
 const usersRoutes = require("./routes/users");
 const wineRoutes = require("./routes/wine");
 
+const {mongoURL} = require("./lib/mongo")
+
 const API_URL = "http://localhost:8008";
 
-mongoose.connect("mongodb://172.18.80.1:27017/oregon-wines", {
+mongoose.connect(mongoURL, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
@@ -71,6 +74,7 @@ app.use((req, res, next) => {
 app.use("/", usersRoutes);
 app.use("/wine", wineRoutes);
 
+// Fetches winebatch information from the blockchain and renders a page that displays this info.
 app.get(
 	"/view",
 	catchAsync(async (req, res) => {
@@ -105,6 +109,7 @@ app.get(
 	})
 );
 
+// Error checking endpoints.
 app.all("*", (req, res, next) => {
 	next(new ExpressError("Page Not Found", 404));
 });

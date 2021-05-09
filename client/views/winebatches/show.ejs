@@ -9,7 +9,7 @@
 				<h5 class="card-title"><%= winebatch.batch_name%></h5>
 				<% if (winebatch.comments) {%>
 				<p class="card-text"><%= winebatch.comments%></p>
-				<% } %> 
+				<% } %>
 			</div>
 
 			<div class="card">
@@ -65,7 +65,7 @@
 						<li class="list-group-item">
 							<b>Tannins: </b><%= winebatch.tannins%>
 						</li>
-						<% } %> 
+						<% } %>
 					</ul>
 					<div class="card-body">
 						<% if (winebatch.status != "completed") {%>
@@ -136,6 +136,7 @@
 	</div>
 </div>
 <!-- The way this is implemented is so janky and bad.  We really need to fix it. -->
+<!-- This JS generates a QRcode that takes the user to the customer client. -->
 <script src="/javascripts/jquery-3.5.1.min.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
 <script src="/javascripts/qrcode.js"></script>

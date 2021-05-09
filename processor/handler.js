@@ -1,3 +1,6 @@
+// handler.js contains the business rules of our blockchain.  The validator sends batches/transactions to the transaction process.  The transaction process
+// Unwraps everything and checks to make sure the proposed transaction is legal or not.  If it is, the state database on the node is updated according, and a new block
+// is added to the blockchain.  If it isn't, a block is added to the blockchain showing that the proposed transaction was invalid.
 const { TransactionHandler } = require("sawtooth-sdk/processor/handler");
 const { InvalidTransaction } = require("sawtooth-sdk/processor/exceptions");
 
@@ -24,7 +27,7 @@ class Handler extends TransactionHandler {
 		} catch (err) {
 			throw new InvalidTransaction("Failed to decode payload: " + err);
 		}
-
+		// Each payload contains addressing information and proposed state changes.
 		const action = payload.action;
 		const address = `${TP_NAMESPACE}${_hash(payload.oName, 16)}${_hash(
 			payload.wID,
@@ -48,6 +51,9 @@ class Handler extends TransactionHandler {
 		}
 	}
 }
+
+// The transaction processor checks to make sure that the incoming transaction isn't asking for a duplicate winebatch to be created.
+// If this isn't the case, the wine batch is created (by updating the state database).
 const create_batch = (context, payload, address) => {
 	return context.getState([address]).then((state) => {
 		if (state[address].length > 0) {
@@ -60,6 +66,9 @@ const create_batch = (context, payload, address) => {
 		return context.setState(entries);
 	});
 };
+
+// If an update batch request is received, the transaction processor needs to first check to make sure that the winebatch exists.  If it does,
+// then the winebatch is updated.  
 const update_batch = (context, payload, address) => {
 	return context.getState([address]).then((state) => {
 		console.log(state[address].length);
@@ -73,6 +82,9 @@ const update_batch = (context, payload, address) => {
 		return context.setState(entries);
 	});
 };
+
+// If a delete batch request is received, the transaction processor needs to first check to see if the winebatch actually exists.  If it does,
+// then the winebatch is deleted.
 const delete_batch = (context, address) => {
 	return context.getState([address]).then((state) => {
 		console.log(state[address].length);
@@ -83,6 +95,7 @@ const delete_batch = (context, address) => {
 	});
 };
 
+// Taking information fro the incoming payload and creating a new object out of it.
 const create_wineBatch = (payload) => {
 	let wineBatch = {
 		wID: payload.wID,

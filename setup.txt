@@ -1,0 +1,17 @@
+Open up a terminal (make sure you're in the root directory of the project) and type:
+docker volume create sawtoothMongo
+The above step shouldn't be necessary, but I can't figure out how to do this without first creating an external volume for mongodb
+Then (make sure you're in the root directory of the project), type in:
+docker-compose up --build -d
+This creates containers for a single node, the transaction processor, and a mongodb.
+
+If you need to work on the transaction processor, and you only want to containerize mongodb and the node, change the name of docker-compose.yaml
+to something else (like docker-composeDEV.yaml).  Then remove the Dev1 from docker-composeDev1.yaml.  THEN open up index.js in the processor folder 
+and follow the instructions in the comments.  It is necessary to run the transaction processor locally through the terminal (just type node index.js
+in the processor folder) if you do this.
+
+When you are finished coding/developing/whatever, simply type docker-down (it doesn't matter where your terminal is currently at).
+
+Whenever you want to start everything up again, simply type:
+docker-compose up -d
+into a terminal.  It doesn't matter where the terminal is currently navigated to.

@@ -1,3 +1,4 @@
+// Index.js is sort of the nexus for everything.  It sets a lot of the modules up, and it has the final error checking route that all of our endpoints go to if an error is found
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -13,7 +14,9 @@ const User = require('./models/users');
 const usersRoutes= require('./routes/users');
 const winebatchesRoutes = require('./routes/winebatches');
 
-mongoose.connect("mongodb://172.18.80.1:27017/oregon-wines", {
+const {mongoURL} = require('./lib/mongo')
+console.log(mongoURL)
+mongoose.connect(mongoURL, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
