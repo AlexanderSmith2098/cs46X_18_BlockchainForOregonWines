@@ -26,6 +26,7 @@ const TP_NAMESPACE = _hash(TP_FAMILY).substr(0, 6);
 const TP_VERSION = "1.0";
 
 // If a user is logged in, this endpoint fetches all in-progress winebatches from the blockchain.  This route definitely needs some pagination built into it.
+// VIEWWINEBATCHES
 router.get(
 	"/",
 	isLoggedIn,
@@ -35,6 +36,11 @@ router.get(
 		res.render("winebatches/index", { winebatches, address });
 	})
 );
+
+// Jim requested that we make an "info" page
+router.get('/home', isLoggedIn, catchAsync(async(req, res) => {
+	res.render("winebatches/home")
+}))
 
 // This endpoint fetches all of the completed winebatches from the blockchain.
 router.get(

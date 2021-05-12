@@ -56,7 +56,7 @@ router.post(
 	}),
 	(req, res) => {
 		req.flash("success", "Welcome back!");
-		const redirectUrl = req.session.returnTo || "/winebatches";
+		const redirectUrl = req.session.returnTo || "/winebatches/home";
 		delete req.session.returnTo;
 		res.redirect(redirectUrl);
 	}

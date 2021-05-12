@@ -11,9 +11,12 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/users');
 
+// These are the two routes or collection of endpoints that we have.  userRoutes contains all of the endpoints related to authentication/authorization
+// winebatchesRoutes contains all of the endpoints related to the manipulation of wine batches
 const usersRoutes= require('./routes/users');
 const winebatchesRoutes = require('./routes/winebatches');
 
+// Setting up our connection to our mongodb
 const {mongoURL} = require('./lib/mongo')
 console.log(mongoURL)
 mongoose.connect(mongoURL, {
@@ -39,6 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, 'public')))
 
+// Session info
 const sessionConfig = {
 	secret: "teenagemutantninjaturtles",
 	resave: false,
@@ -50,9 +54,11 @@ const sessionConfig = {
 	},
 };
 
+// We use the flash module to assist in error handeling
 app.use(session(sessionConfig));
 app.use(flash());
 
+// A bunch of passport setup/init stuff
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -70,10 +76,13 @@ app.use((req,res,next) => {
 app.use('/', usersRoutes);
 app.use('/winebatches', winebatchesRoutes);
 
+
+// If a resource isn't found, express hits this endpoint (or whatever) and a 404 error is sent to the user
 app.all("*", (req, res, next) => {
 	next(new ExpressError("Page Not Found", 404));
 });
 
+// This endpoint handles all other errors
 app.use((err, req, res, next) => {
 	const { statusCode = 500 } = err;
 	if (!err.message) {
