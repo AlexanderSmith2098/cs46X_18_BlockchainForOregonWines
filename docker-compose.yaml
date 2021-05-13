@@ -6,7 +6,7 @@ services:
     container_name: projectMongo
     image: mongo:latest
     ports:
-      - 27017:27017
+      - 3300:27017
     environment: 
         MONGO_INITDB_ROOT_USERNAME: root
         MONGO_INITDB_ROOT_PASSWORD: pass
