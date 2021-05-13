@@ -1,6 +1,4 @@
-Open up a terminal (make sure you're in the root directory of the project) and type:
-docker volume create sawtoothMongo
-Then (make sure you're in the root directory of the project), type in:
+Make sure you're in the root of the directory of the project and type in:
 docker-compose up --build -d
 This creates containers for a single node, the transaction processor, and a mongodb.
 
