@@ -4,7 +4,7 @@ const passport = require("passport");
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/users");
 const { isLoggedIn} = require("../middleware");
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 
 router.get("/register", (req, res) => {
 	res.render("users/register");
@@ -137,17 +137,35 @@ router.get("/logout", (req, res) => {
 	res.redirect("/login");
 });
 
-// be sure npm install nodemailer
-async function main() {
-  let testAccount = await nodemailer.createTestAccount();
-	let transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: false,
-    auth: {
-      user: testAccount.user,
-      pass: testAccount.pass,
-    },
-  });
+
+let transporter = nodemailer.createTransport({
+  // host: 'smtp.ethereal.email',
+  service: 'Gmail', // list：https://nodemailer.com/smtp/well-known/
+  port: 465, // SMTP port
+  secureConnection: true, // SSL
+  auth: {
+    user: 'blockchainoregonwine@gmail.com',
+    // google account password
+    pass: 'password!!4321',
+  }
+});
+
+let mailOptions = {
+  from: '"Blockchain of Oregon Wine Group18" <blockchainoregonwine@gmail.com>', // sender address
+  to: req.user.email, //receivers
+  subject: 'Your Account is Now Active!'+ Date.now(), // Subject line
+  // text or html format
+  // text: 'Hello world?', // plain text body
+  html: '<p><img src="https://robbreport.com/wp-content/uploads/2020/02/farnienteestate_007.jpg?w=1000" width="1000" height="350"/></p><h1>Dear Customer</h1><p>Thank you for taking the time to create an account and joining the Blockchain of Oregon Wine mailing list.</p><p>Watch your inbox for special inventory sales, invitations to our exclusive events, and the latest news about our wines</p><p>Access your <a href="www.google.com">account</a> to redeem your rebate by scanning the QR code on our premier wines. For more tips about entertaining and enjoying wine please visit our website: <a href="www.google.com">WINERY WEBSITE</a></p><p>When you’re in our neighborhood stop by we would love to see you and share a glass of wine in the meantime will stay in touch!</p><h2>Cheers!</h2><p style="color:grey;">You’re getting this email because you are a registered customer. Thank you!</p>' // html body
+};
+
+// send mail with defined transport object
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+    return console.log(error);
+  }
+  console.log('Message sent: %s', info.messageId);
+  // Message sent: <04ec7731-cc68-1ef6-303c-61b0f796b78f@qq.com>
+});
 
 module.exports = router;
