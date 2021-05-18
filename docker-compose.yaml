@@ -24,8 +24,7 @@ services:
 
   tp:
     container_name: transaction-processor
-    build:
-      context: ./processor
+    image: paynemi/tranproc:1.0
     expose:
       - 4004
     environment:
