@@ -31,6 +31,42 @@ services:
       URL: tcp://sawtooth-validator-default:4004
     volumes:
       - ./:/code
+    
+  client1:
+    container_name: wineryClient
+    build:
+      context: ./client
+    expose: 
+      - 8080
+    ports:
+        - 8080:8080
+    environment: 
+      MONGO_HOST: projectMongo
+      MONGO_PORT: 27017
+      MONGO_USER: winery
+      MONGO_PASSWORD: pass
+      MONGO_DB_NAME: oregon-wines
+      REST_API: sawtooth-rest-api-default
+    volumes:
+      - ./:/client1
+    
+  client2:
+    container_name: customerClient
+    build:
+      context: ./custClient
+    expose: 
+      - 3000
+    ports:
+        - 3000:3000
+    environment: 
+      MONGO_HOST: projectMongo
+      MONGO_PORT: 27017
+      MONGO_USER: customer
+      MONGO_PASSWORD: pass
+      MONGO_DB_NAME: oregon-wines
+      REST_API: sawtooth-rest-api-default
+    volumes:
+      - ./:/client2
 
   validator:
     image: hyperledger/sawtooth-validator:latest

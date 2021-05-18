@@ -8,7 +8,7 @@ const { createHash } = require("crypto");
 const { v4: uuidv4 } = require("uuid");
 
 //blockchain dependencies
-const API_URL = "http://localhost:8008";
+const API_URL = `http://${process.env.REST_API}:8008` || "http://localhost:8008";
 
 const { createContext, CryptoFactory } = require("sawtooth-sdk/signing");
 const { protobuf } = require("sawtooth-sdk");
