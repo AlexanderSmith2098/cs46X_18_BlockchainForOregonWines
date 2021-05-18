@@ -1,11 +1,14 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style12.css">
+
 
 <div class="row">
 	<div class="col-6 offset-3">
 		<div class="card mb-3">
-			<div class="card-body">
-				<h3 class="card-title"><%= user.firstname%> <%= user.lastname%></h3>
+			<div class="card-header">
+				<h3><%= user.firstname%> <%= user.lastname%></h3>
 			</div>
+			<div class="card-body"> 
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><b>Email: </b><%= user.email%></li>
 				<li class="list-group-item"><b>Address: </b><%= user.address%></li>
@@ -13,11 +16,20 @@
                 <li class="list-group-item"><b>Zip Code: </b><%= user.zip%></li>
                 <li class="list-group-item"><b>State: </b><%= user.state%></li>
                 <li class="list-group-item"><b>Phone Number: </b><%= user.phone%></li>
-				
 			</ul>
-			<a href="/passchan" class="nav-link">Change Password</a>
-			<a href="/account/edit" class="nav-link">Change Account Info</a>
-            <a href="/logout" class="nav-link">Logout</a>
+			</div>
+
+			<div class="card-header">
+				<button class="btn float-right btn_login"><a href="/passchan" class="btn float-right btn_login"> Change Password</a></button>
+				<button class="btn float-right btn_login"><a href="/account/edit"  class="btn float-right btn_login">Change Account Info</a></button>
+				<button class="btn float-right btn_login"><a href="/logout"  class="btn float-right btn_login">Logout</a></button>
+            </div>
+
+
+
+
+
+
 		</div>
 	</div>
 </div>

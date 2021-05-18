@@ -1,5 +1,9 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style13.css">
+<div class="card-header">
 <h1>Change Password</h1>
+</div>
+<div class="card-header"> 
 <form action="/passchan" method="POST" class="validated-form" novalidate>
 	<div class="mb-3">
 		<label class="form-label" for="Opassword">Enter Old Password</label>
@@ -11,6 +15,7 @@
 			required
 		/>
 	</div>
+
 	<div class="mb-3">
 		<label class="form-label" for="Npassword">Enter New Password</label>
 		<input
@@ -31,5 +36,8 @@
 			required
 		/>
 	</div>
-	<button class="btn-success">Submit</button>
+
+	<button class="btn float-right btn_login">Submit</button>
+	<a href="/viewaccount">Back to Account</a>
+</div>
 </form>

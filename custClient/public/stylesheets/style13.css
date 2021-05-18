@@ -1,5 +1,5 @@
 html,body{
-    background-image: url('https://wallpaperaccess.com/full/751050.jpg');
+    background-image: url("https://s2.best-wallpaper.net/wallpaper/1920x1200/1903/Vineyard-village-sunshine-morning_1920x1200.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -24,7 +24,16 @@ html,body{
         background-color: rgba(51, 51, 51, 0.809);
     }
     
+    .inline-buttons .one-third {
+        text-align: center;
+    }
     
+    
+        .inline-buttons .one-third {
+            width: 100%;
+            margin: 20px;
+        }
+        
     
     .card-header h3{
     color:black;
@@ -54,30 +63,6 @@ html,body{
     margin-left: 15px;
     margin-right: 5px;
     }
-<<<<<<< HEAD
-    
-    .btn_login{
-    margin-top: 15px;
-    margin-bottom: 10px;
-    color: white;
-    font-weight: bold;
-    background-color: #8b0000;
-    width: 100px;
-    }
-    
-    .btn_login:hover{
-    color: black;
-    background-color: white;
-    }
-    
-    .links{
-    color: white;
-    }
-    
-    .links a{
-    margin-left: 4px;
-    }
-=======
     .button{
         background-color: #8b0000;
     }
@@ -101,4 +86,3 @@ html,body{
         .links a{
         margin-left: 4px;
         }
->>>>>>> ab47d64 (old styling)

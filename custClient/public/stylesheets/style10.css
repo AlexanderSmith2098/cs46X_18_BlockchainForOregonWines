@@ -1,33 +1,32 @@
 html,body{
-    background-image: url('https://wallpaperaccess.com/full/751050.jpg');
+    background-image: url("https://jooinn.com/images1280_/corks-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     font-family: 'Numans', sans-serif;
-    color: white;
-    background-color: black;
+    color: #8b0000;
     }
     
     .container{
-    height: auto;
+    height: 100%;
     align-content: center;
-    background-color: rgba(51, 51, 51, 0.809);
     
     }
     
     .card{
-        height: auto;
-        margin-top: auto;
-        margin-bottom: auto;
-        width: auto;
-        color:black;
-        background-color: rgba(51, 51, 51, 0.809);
+    color:white;
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgb(65, 62, 62) !important;
+    box-shadow: inset 10px 10px 150px #000;
     }
     
     
-    
     .card-header h3{
-    color:black;
+        text-align: center;
+    color:white;
     }
     
     .social_icon{
@@ -54,30 +53,6 @@ html,body{
     margin-left: 15px;
     margin-right: 5px;
     }
-<<<<<<< HEAD
-    
-    .btn_login{
-    margin-top: 15px;
-    margin-bottom: 10px;
-    color: white;
-    font-weight: bold;
-    background-color: #8b0000;
-    width: 100px;
-    }
-    
-    .btn_login:hover{
-    color: black;
-    background-color: white;
-    }
-    
-    .links{
-    color: white;
-    }
-    
-    .links a{
-    margin-left: 4px;
-    }
-=======
     .button{
         background-color: #8b0000;
     }
@@ -86,7 +61,7 @@ html,body{
         
         color: white;
         font-weight: bold;
-        background-color: #80690e;
+        background-color: #941e41;
         }
         
         .btn_login:hover{
@@ -95,10 +70,11 @@ html,body{
         }
         
         .links{
+            text-align: center;
         color: white;
         }
         
         .links a{
+            text-align: center;
         margin-left: 4px;
         }
->>>>>>> ab47d64 (old styling)

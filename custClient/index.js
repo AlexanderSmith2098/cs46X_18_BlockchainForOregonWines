@@ -17,7 +17,7 @@ const wineRoutes = require("./routes/wine");
 
 const API_URL = "http://localhost:8008";
 
-mongoose.connect("mongodb://172.25.96.1:27017/oregon-wines", {
+mongoose.connect("mongodb://localhost/oregon-wines", {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
