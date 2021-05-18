@@ -32,7 +32,7 @@ router.post(
 					return next(err);
 				} else {
 					req.flash("success", "Welcome to Oregon Wines");
-					res.redirect("/winebatches");
+					res.redirect("/winebatches/home");
 				}
 			});
 		} catch (e) {
