@@ -1,3 +1,4 @@
+// winebatches.js contains all of the endpoints that deal with creating, deleting, updating, and fetching winebatch information from the blockchain.
 //regular dependencies
 const express = require("express");
 const router = express.Router();
@@ -24,6 +25,8 @@ const TP_FAMILY = "winebatches";
 const TP_NAMESPACE = _hash(TP_FAMILY).substr(0, 6);
 const TP_VERSION = "1.0";
 
+// If a user is logged in, this endpoint fetches all in-progress winebatches from the blockchain.  This route definitely needs some pagination built into it.
+// VIEWWINEBATCHES
 router.get(
 	"/",
 	isLoggedIn,
@@ -33,6 +36,13 @@ router.get(
 		res.render("winebatches/index", { winebatches, address });
 	})
 );
+
+// Jim requested that we make an "info" page
+router.get('/home', isLoggedIn, catchAsync(async(req, res) => {
+	res.render("winebatches/home")
+}))
+
+// This endpoint fetches all of the completed winebatches from the blockchain.
 router.get(
 	"/comp",
 	isLoggedIn,
@@ -43,19 +53,13 @@ router.get(
 	})
 );
 
-router.get(
-	"/custview",
-	catchAsync(async (req, res) => {
-		const address = req.query.a;
-		let winebatch = await fetchBatch(address);
-		res.render("winebatches/custview", { winebatch });
-	})
-);
-
+// This endpoint renders the new winebatches view.
 router.get("/new", isLoggedIn, (req, res) => {
 	res.render("winebatches/new");
 });
 
+// This endpoint submits a newly created winebatch to the blockchain.  If the blockchain accepts the winebatch, the user is redirected
+// to a page that displays the information for the successfully added winebatch.
 router.post(
 	"/",
 	isLoggedIn,
@@ -81,6 +85,7 @@ router.post(
 	})
 );
 
+// This endpoint fetches information for an individual winebatch from the blockchain.
 router.get(
 	"/:id",
 	isLoggedIn,
@@ -98,6 +103,8 @@ router.get(
 	})
 );
 
+// This endpoint fetches information for an individual winebatch and then renders a page that contains a form that the user can use
+// to edit the winebatch's information.  Only in-progress winebatches can be edited.
 router.get(
 	"/:id/edit",
 	isLoggedIn,
@@ -114,6 +121,8 @@ router.get(
 		res.render("winebatches/edit", { winebatch });
 	})
 );
+
+// This endpoint changes the status of a winebatch from in-progress to complete.
 router.post(
 	"/:id/status",
 	isLoggedIn,
@@ -145,6 +154,8 @@ router.post(
 		}, 1000);
 	})
 );
+
+// This endpoint is used to update winebatch information.
 router.put(
 	"/:id",
 	isLoggedIn,
@@ -169,6 +180,7 @@ router.put(
 	})
 );
 
+// This endpoint deletes a winebatch from the blockchain.  Only in-progress winebatches can be deleted.
 router.delete(
 	"/:id",
 	isLoggedIn,
@@ -190,6 +202,10 @@ router.delete(
 		}, 1000);
 	})
 );
+
+// This is the first of many functions that take a build a transaction and then wrap the transaction up in a batch (multiple transactions can be in a batch).
+// This particular function constructs the payload of the transaction.  This provides the validator and transaction processor with addressing information
+// and instructions on how the node's state database should be modified.
 
 const create_payload = (action, data, oID, uID) => {
 	const payload = {
@@ -218,6 +234,7 @@ const create_payload = (action, data, oID, uID) => {
 	return payload;
 };
 
+// All of these functions wrap a payload up in a transaction and then wrap the transaction up in a batch.
 const setup_batch = (payload, pk, address) => {
 	const payloadBytes = Buffer.from(JSON.stringify(payload));
 	const context = createContext("secp256k1");
@@ -276,6 +293,7 @@ const create_transaction = (
 	});
 	return transaction;
 };
+// The transaction is taken and is wrapped up in a batch file.
 const create_batchHeaderBytes = (signer, transactions) => {
 	const batchHeaderBytes = protobuf.BatchHeader.encode({
 		signerPublicKey: signer,
@@ -298,6 +316,7 @@ const create_batchListBytes = (batch) => {
 	return batchListBytes;
 };
 
+// This function fetches an individual wine batch from the blockchain (and then decodes it into something readable)
 const fetchBatch = (address) => {
 	return axios.get(`${API_URL}/state/${address}`).then((response) => {
 		let decoded = Buffer.from(response.data.data, "base64").toString("utf8");
@@ -310,6 +329,7 @@ const fetchBatch = (address) => {
 	});
 };
 
+// This function fetches all of a winery's winebatches from the blockchain.
 const fetchMBatches = (address) => {
 	return axios.get(`${API_URL}/state?address=${address}`).then((response) => {
 		return response.data.data.map((entity) => {

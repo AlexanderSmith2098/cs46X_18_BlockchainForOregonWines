@@ -2,6 +2,19 @@ version: "2.1"
 
 services:
 
+  db:
+    container_name: projectMongo
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    environment: 
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: pass
+        MONGO_INITDB_DATABASE: oregon-wines
+    volumes:
+      - sawtoothMongo:/data/db
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
   settings-tp:
     image: hyperledger/sawtooth-settings-tp:latest
     container_name: sawtooth-settings-tp-default
@@ -73,3 +86,8 @@ services:
           https://raw.githubusercontent.com/hyperledger/sawtooth-core/master/rest_api/openapi.yaml && \
         /usr/share/nginx/run.sh \
         \""
+
+volumes:
+    sawtoothMongo:
+        external: true
+        name: sawtoothMongo

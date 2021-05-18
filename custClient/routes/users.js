@@ -1,3 +1,4 @@
+// users.js contains endpoints related to user management.
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
@@ -5,10 +6,12 @@ const catchAsync = require("../utils/catchAsync");
 const User = require("../models/users");
 const { isLoggedIn} = require("../middleware");
 
+// Renders the registration page
 router.get("/register", (req, res) => {
 	res.render("users/register");
 });
 
+// Creates a new user account.
 router.post(
 	"/register",
 	catchAsync(async (req, res) => {
@@ -41,11 +44,12 @@ router.post(
 	})
 );
 
+// Renders the login page
 router.get("/login", (req, res) => {
 	res.render("users/login");
 });
 
-
+// Logs the user in (Or tells the user that they failed to login)
 router.post(
 	"/login",
 	passport.authenticate("local", {
@@ -59,6 +63,8 @@ router.post(
 		res.redirect(redirectUrl);
 	}
 );
+
+// Renders the account management page.
 router.get("/viewaccount", isLoggedIn, (req, res) => {
     const user = {
 			firstname: req.user.firstname,
@@ -72,9 +78,13 @@ router.get("/viewaccount", isLoggedIn, (req, res) => {
 		};
         res.render("users/account", {user});
 });
+
+// Renders the password change page.
 router.get("/passchan", isLoggedIn, (req, res) => {
 	res.render("users/passchan");
 });
+
+// Changes a user's password
 router.post(
 	"/passchan",
 	isLoggedIn,
@@ -95,6 +105,8 @@ router.post(
 		}
 	})
 );
+
+// Renders the account editing page
 router.get("/account/edit", isLoggedIn, (req, res) => {
 	const user = {
 		email: req.user.email.trim(),
@@ -107,6 +119,7 @@ router.get("/account/edit", isLoggedIn, (req, res) => {
 	res.render("users/infochange", {user});
 });
 
+// Changes a user's account information (not their password).
 router.patch(
 	"/account",
 	isLoggedIn,
@@ -129,7 +142,7 @@ router.patch(
 	})
 );
 
-
+// Logs a user out and redirects them to the login page.
 router.get("/logout", (req, res) => {
 	req.logout();
 	req.flash("success", "Logged Out");

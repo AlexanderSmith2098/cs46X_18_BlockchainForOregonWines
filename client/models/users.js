@@ -1,3 +1,4 @@
+// This is the schema for the user class.  This application uses mongodb to to store user data and run its authentication/authorization system.
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 const Schema = mongoose.Schema;
