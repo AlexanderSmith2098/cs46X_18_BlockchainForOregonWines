@@ -18,7 +18,8 @@ const wineRoutes = require("./routes/wine");
 
 const {mongoURL} = require("./lib/mongo")
 
-const API_URL = "http://localhost:8008";
+const API_URL =
+	`http://${process.env.REST_API}:8008` || "http://localhost:8008";
 
 mongoose.connect(mongoURL, {
 	useNewUrlParser: true,

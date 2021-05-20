@@ -19,4 +19,3 @@ Our project consists of these components
     included as a parameter in the url in the QR code) and then displays it for the customer.
 
 ![](projecto.PNG)
-
