@@ -1,5 +1,28 @@
 # cs46X_18_BlockchainForOregonWines
-Our project consists of these components
+Setup:
+
+Make sure you're in the root of the directory of the project and type in:
+docker-compose up --build -d
+This creates containers for a single node, the transaction processor, and a mongodb.
+
+If you want to work on the winery client, comment out the "client1" chunk of code in the docker-compose.yaml file.  Then run the docker-compose file as written above.
+You'll have to start the winery client manually if you do that.  Navigate to the client folder and type in:
+nodemon -L index.js
+
+If you want to work on the customer client, comment out the "client2" chunk of code in the docker-compose.yaml file.  Then run the docker-compose file as written above.
+You'll have to start the customer client manually if you do that.  Navigate to the custClient folder and type in:
+nodemon -L index.js
+
+When you are finished coding/developing/whatever, simply type docker-down (it doesn't matter where your terminal is currently at).
+
+Whenever you want to start everything up again, simply type:
+docker-compose up -d
+into a terminal.  Both the UP and DOWN commands will work as long as you're in the directory (or a child directory) that contains the docker-compose.yaml.
+
+Wine batch data will not persist (I couldln't figure out how to do this).  However mongodb data for both the customer and winery clients will.
+
+
+Our project consists of these components:
 
 1:     A node (the docker-yaml file containerizes all of the components of the node) = The node was constructed using the Hyperledger Sawtooth     javascript SDK.  It has a REST-api and a validator. 
     The REST-api receives requests from our applications and sends them to the validator.  The validator checks the permissions
