@@ -1,4 +1,6 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style10.css">
+
 <form action="/login" method="POST" class="validated-form" novalidate>
 	<body>
 		<div class="container">
@@ -35,11 +37,11 @@
 									placeholder="password"
 									required
 								/>
-							<button type="submit" class="btn btn-primary">Login</button>
+							<button type="submit" class="btn float-right btn_login">Login</button>
 						</form>
-                        <p>Don't have an account? <a href="/register">Register here.</a></p>
+
 					</div>
-					
+					<p>Don't have an account? <a href="/register">Register here.</a></p>
 				</div>
 			</div>
 		</div>

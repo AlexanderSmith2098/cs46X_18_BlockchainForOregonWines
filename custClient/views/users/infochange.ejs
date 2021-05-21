@@ -1,15 +1,18 @@
 <% layout('layouts/boilerplate') %>
-<div class="row">
-    <div class="col-6 offset-3">
-        <form action="/account?_method=PATCH" method="POST" novalidate class="validated-form">
-            <h1 class> Edit Account Info</h1>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style14.css">
+
+		<form action="/account?_method=PATCH" method="POST" novalidate class="validated-form">
+			<div class="card-header"> 
+			<h3 class> Edit Account Info</h3>
+		</div>
             <div class="input-group form-group">
-								
+				<div class="card-body"> 
                             <div class="input-group form-group">
 								<div class="input-group-prepend">
 								</div>
 								<input type="email" class="form-control" placeholder="Email" name="email" value="<%= user.email %> " required>
 							</div>
+
                             <div class="input-group form-group">
 								<div class="input-group-prepend">
 								</div>
@@ -40,11 +43,10 @@
 								<input type="text" class="form-control" placeholder="Phone Number" name="phone" value="<%= user.phone %> " required>
 								
 							</div>
-							<button type="submit" class="btn btn-primary">Edit Info</button>
+							<button type="submit" class="btn float-right btn_login">Edit Info</button>
+				</div>
         </form>
         
     </div>
     <a href="/viewaccount">Back to Account</a>
-</div>
-    </div>
 </div>

@@ -1,3 +1,5 @@
+// users.js contains all of the endpoints that are involved user creation and management.  
+
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
@@ -6,10 +8,14 @@ const User = require("../models/users");
 const { createContext } = require("sawtooth-sdk/signing");
 const { isLoggedIn } = require("../middleware");
 
+// Renders registration page
 router.get("/register", (req, res) => {
 	res.render("users/register");
 });
 
+// Uses passport to create a user document in mongodb.  The password is salted and then hashed obviously.
+// Right now, we're storing private keys (which are necessary for each user/winery to send transactions to the blockchain) in the same database that contains user login information.
+// This is obviously a huge no-no, but this thing isn't even remotely close to deployment, so IT'S OKAY.
 router.post(
 	"/register",
 	catchAsync(async (req, res) => {
@@ -26,7 +32,7 @@ router.post(
 					return next(err);
 				} else {
 					req.flash("success", "Welcome to Oregon Wines");
-					res.redirect("/winebatches");
+					res.redirect("/winebatches/home");
 				}
 			});
 		} catch (e) {
@@ -36,10 +42,12 @@ router.post(
 	})
 );
 
+// Renders the login page.
 router.get("/login", (req, res) => {
 	res.render("users/login");
 });
 
+// Creates a session and logs the user in.  
 router.post(
 	"/login",
 	passport.authenticate("local", {
@@ -48,17 +56,23 @@ router.post(
 	}),
 	(req, res) => {
 		req.flash("success", "Welcome back!");
-		const redirectUrl = req.session.returnTo || "/winebatches";
+		const redirectUrl = req.session.returnTo || "/winebatches/home";
 		delete req.session.returnTo;
 		res.redirect(redirectUrl);
 	}
 );
+
+// Renders the account management page.
 router.get("/account", isLoggedIn, (req, res) => {
 	res.render("users/account");
 });
+
+// Renders the password change page.
 router.get("/passchan", isLoggedIn, (req, res) => {
 	res.render("users/passchan");
 });
+
+// Changes the users password (or tells the user that the entered in their information correctly while trying to change their password)
 router.post(
 	"/passchan",
 	isLoggedIn,
@@ -80,6 +94,7 @@ router.post(
 	})
 );
 
+// Logs the user out and redirects them to the login page.
 router.get("/logout", (req, res) => {
 	req.logout();
 	req.flash("success", "Logged Out");

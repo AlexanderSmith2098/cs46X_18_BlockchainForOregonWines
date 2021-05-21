@@ -1,98 +1,105 @@
 <% layout('layouts/boilerplate') %>
-<link rel="stylesheet" type="text/css" href="/stylesheets/style5.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style5.css" />
 
 <div class="row">
-
 	<div class="col-6 offset-3">
-		<h1 class> Wine Info</h1>
+		<h1 class>Wine Info</h1>
 		<div class="card mb-3">
-	
-
 			<div class="card-bod">
-			
 				<h5 class="card-title"><%= winebatch.batch_name%></h5>
+				<% if (winebatch.comments) {%>
 				<p class="card-text"><%= winebatch.comments%></p>
+				<% } %>
 			</div>
-		
+
 			<div class="card">
 				<div class="card-header">
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item">
-					<b>Wine Name: </b><%= winebatch.wine_name%>
-				</li>
-				<li class="list-group-item">
-					<b>Number of Bottles: </b><%= winebatch.num_bottles%>
-				</li>
-				<li class="list-group-item">
-					<b>Style: </b><%= winebatch.style%>
-				</li>
-				<li class="list-group-item">
-					<b>Alcohol: </b><%= winebatch.alcohol%>
-				</li>
-				<li class="list-group-item">
-					<b>American Viticulture Area: </b><%= winebatch.ava%>
-				</li>
-				<li class="list-group-item">
-					<b>Acidity: </b><%= winebatch.acidity%>
-				</li>
-				<li class="list-group-item">
-					<b>Grape Variety: </b><%= winebatch.grape_variety%>
-				</li>
-				<li class="list-group-item">
-					<b>Harvest Location: </b><%= winebatch.harvest_loc%>
-				</li>
-				<li class="list-group-item">
-					<b>Harvest Date: </b><%= winebatch.harvest_date%>
-				</li>
-				<li class="list-group-item">
-					<b>Bottle Date: </b><%= winebatch.bottle_date%>
-				</li>
-				<li class="list-group-item">
-					<b>Average Sunshine: </b><%= winebatch.avg_sunshine%>
-				</li>
-				<li class="list-group-item">
-					<b>Average Temperature: </b><%= winebatch.avg_temp%>
-				</li>
-				<li class="list-group-item">
-					<b>Tannins: </b><%= winebatch.tannins%>
-				</li>
-				<li class="list-group-item">
-					<b>Comments: </b><%= winebatch.comments%>
-				</li>
-			</ul>
-			<div class="card-body">
-				<% if (winebatch.status != "completed") {%> 
-				<a
-					class="card-link btn btn-info"
-					href="/winebatches/<%= winebatch.wID %>/edit"
-					>Edit</a
-				>
-				<form
-					class="d-inline"
-					action="/winebatches/<%= winebatch.wID %>?_method=DELETE"
-					method="POST"
-				>
-					<button class="btn btn-danger">Delete</button>
-				</form>
-				<% } %> 
-				<button type="button" class="btn btn-success" id="qrCodeButt">
-					QRCode
-				</button>
-				<% if (winebatch.status != "completed") {%> 
-				<form
-					class="d-inline"
-					action="/winebatches/<%= winebatch.wID %>/status"
-					method="POST"
-				>
-					<button class="btn btn-warning">Complete</button>
-				</form>
-				<% } %> 
+					<ul class="list-group list-group-flush">
+						<% if (winebatch.wine_name) {%>
+						<li class="list-group-item">
+							<b>Wine Name: </b><%= winebatch.wine_name%>
+						</li>
+						<% } %> <% if (winebatch.num_bottles) {%>
+						<li class="list-group-item">
+							<b>Number of Bottles: </b><%= winebatch.num_bottles%>
+						</li>
+						<% } %> <% if (winebatch.style) {%>
+						<li class="list-group-item"><b>Style: </b><%= winebatch.style%></li>
+						<% } %> <% if (winebatch.alcohol) {%>
+						<li class="list-group-item">
+							<b>Alcohol: </b><%= winebatch.alcohol%>
+						</li>
+						<% } %> <% if (winebatch.ava) {%>
+						<li class="list-group-item">
+							<b>American Viticulture Area: </b><%= winebatch.ava%>
+						</li>
+						<% } %> <% if (winebatch.acidity) {%>
+						<li class="list-group-item">
+							<b>Acidity: </b><%= winebatch.acidity%>
+						</li>
+						<% } %> <% if (winebatch.grape_variety) {%>
+						<li class="list-group-item">
+							<b>Grape Variety: </b><%= winebatch.grape_variety%>
+						</li>
+						<% } %> <% if (winebatch.harvest_loc) {%>
+						<li class="list-group-item">
+							<b>Harvest Location: </b><%= winebatch.harvest_loc%>
+						</li>
+						<% } %> <% if (winebatch.harvest_date) {%>
+						<li class="list-group-item">
+							<b>Harvest Date: </b><%= winebatch.harvest_date%>
+						</li>
+						<% } %> <% if (winebatch.bottle_date) {%>
+						<li class="list-group-item">
+							<b>Bottle Date: </b><%= winebatch.bottle_date%>
+						</li>
+						<% } %> <% if (winebatch.avg_sunshine) {%>
+						<li class="list-group-item">
+							<b>Average Sunshine: </b><%= winebatch.avg_sunshine%>
+						</li>
+						<% } %> <% if (winebatch.avg_temp) {%>
+						<li class="list-group-item">
+							<b>Average Temperature: </b><%= winebatch.avg_temp%>
+						</li>
+						<% } %> <% if (winebatch.tannins) {%>
+						<li class="list-group-item">
+							<b>Tannins: </b><%= winebatch.tannins%>
+						</li>
+						<% } %>
+					</ul>
+					<div class="card-body">
+						<% if (winebatch.status != "completed") {%>
+						<a
+							class="card-link btn btn-info"
+							href="/winebatches/<%= winebatch.wID %>/edit"
+							>Edit</a
+						>
+						<form
+							class="d-inline"
+							action="/winebatches/<%= winebatch.wID %>?_method=DELETE"
+							method="POST"
+						>
+							<button class="btn btn-danger">Delete</button>
+						</form>
+						<% } %>
+						<button type="button" class="btn btn-success" id="qrCodeButt">
+							QRCode
+						</button>
+						<% if (winebatch.status != "completed") {%>
+						<form
+							class="d-inline"
+							action="/winebatches/<%= winebatch.wID %>/status"
+							method="POST"
+						>
+							<button class="btn btn-warning">Complete</button>
+						</form>
+						<% } %>
+					</div>
+					<!-- <div class="card-footer text-muted">Date Created: 12/20/20</div> -->
+				</div>
 			</div>
-			<div class="card-footer text-muted">Date Created: 12/20/20</div>
 		</div>
 	</div>
-</div>
-</div>
 </div>
 
 <div
@@ -129,12 +136,14 @@
 	</div>
 </div>
 <!-- The way this is implemented is so janky and bad.  We really need to fix it. -->
+<!-- This JS generates a QRcode that takes the user to the customer client. -->
 <script src="/javascripts/jquery-3.5.1.min.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
 <script src="/javascripts/qrcode.js"></script>
 <script>
 	let myModal = new bootstrap.Modal(document.getElementById("qrCodeModal"));
-    let qrcString = "http://localhost:3000/view?a=<%=winebatch.address%>"
+	let qrcString = "http://localhost:3000/view?a=<%=winebatch.address%>";
+	console.log("Full Address: ", qrcString);
 	let qrcode = new QRCode(document.getElementById("qrCodeOutput"), {
 		width: 400,
 		height: 400,
@@ -142,8 +151,8 @@
 	qrcode.makeCode(qrcString);
 	let img = document.querySelector("img");
 	img.style.padding = 0;
-	img.style.margin = 'auto';
-	img.style.display = 'block';
+	img.style.margin = "auto";
+	img.style.display = "block";
 
 	document.getElementById("qrCodeButt").addEventListener("click", () => {
 		myModal.show();

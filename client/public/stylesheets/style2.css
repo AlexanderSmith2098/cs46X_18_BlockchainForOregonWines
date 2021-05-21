@@ -1,10 +1,9 @@
 html,body{
-    background-image: url('https://wallpaperaccess.com/full/468014.jpg');
+    background-image: url('https://wallpaperaccess.com/full/751050.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     font-family: 'Numans', sans-serif;
-    color: #8b0000;
     }
     
     .container{
@@ -18,12 +17,13 @@ html,body{
     margin-top: auto;
     margin-bottom: auto;
     width: 400px;
-    background-color: rgba(255, 255, 255, 0.664) !important;
+
+    background-color: rgba(0,0,0,0.5) !important;
     }
     
     
     .card-header h3{
-    color:black;
+    color:white;
     }
     
     .social_icon{

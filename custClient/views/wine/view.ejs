@@ -4,34 +4,58 @@
 		<div class="card mb-3">
 			<div class="card-body">
 				<h3 class="card-title"><%= winebatch.wine_name%></h3>
+				<% if (winebatch.comments) {%> 
 				<p class="card-text"><%= winebatch.comments%></p>
+				<% } %> 
 			</div>
 			<ul class="list-group list-group-flush">
+				<% if (winebatch.style) {%> 
 				<li class="list-group-item"><b>Style: </b><%= winebatch.style%></li>
+				<% } %> 
+				<% if (winebatch.alcohol) {%> 
 				<li class="list-group-item"><b>Alcohol: </b><%= winebatch.alcohol%></li>
+				<% } %> 
+				<% if (winebatch.ava) {%> 
 				<li class="list-group-item">
 					<b>American Viticulture Area: </b><%= winebatch.ava%>
 				</li>
+				<% } %> 
+				<% if (winebatch.acidity) {%> 
 				<li class="list-group-item"><b>Acidity: </b><%= winebatch.acidity%></li>
+				<% } %> 
+				<% if (winebatch.grape_variety) {%> 
 				<li class="list-group-item">
 					<b>Grape Variety: </b><%= winebatch.grape_variety%>
 				</li>
+				<% } %> 
+				<% if (winebatch.harvest_loc) {%> 
 				<li class="list-group-item">
 					<b>Harvest Location: </b><%= winebatch.harvest_loc%>
 				</li>
+				<% } %> 
+				<% if (winebatch.harvest_date) {%> 
 				<li class="list-group-item">
 					<b>Harvest Date: </b><%= winebatch.harvest_date%>
 				</li>
+				<% } %> 
+				<% if (winebatch.bottle_date) {%> 
 				<li class="list-group-item">
 					<b>Bottle Date: </b><%= winebatch.bottle_date%>
 				</li>
+				<% } %> 
+				<% if (winebatch.avg_sunshine) {%> 
 				<li class="list-group-item">
 					<b>Average Sunshine: </b><%= winebatch.avg_sunshine%>
 				</li>
+				<% } %> 
+				<% if (winebatch.avg_temp) {%> 
 				<li class="list-group-item">
 					<b>Average Temperature: </b><%= winebatch.avg_temp%>
 				</li>
+				<% } %> 
+				<% if (winebatch.tannins) {%> 
 				<li class="list-group-item"><b>Tannins: </b><%= winebatch.tannins%></li>
+				<% } %> 
 			</ul>
 			<div class="card-body">
 				<form action="/login" method="GET">

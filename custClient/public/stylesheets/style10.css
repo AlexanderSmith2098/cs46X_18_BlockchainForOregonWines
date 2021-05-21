@@ -1,0 +1,80 @@
+html,body{
+    background-image: url("https://jooinn.com/images1280_/corks-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    color: #8b0000;
+    }
+    
+    .container{
+    height: 100%;
+    align-content: center;
+    
+    }
+    
+    .card{
+    color:white;
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgb(65, 62, 62) !important;
+    box-shadow: inset 10px 10px 150px #000;
+    }
+    
+    
+    .card-header h3{
+        text-align: center;
+    color:white;
+    }
+    
+    .social_icon{
+    position: absolute;
+    right: 20px;
+    top: -45px;
+    }
+    
+    
+    input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+    
+    }
+    
+    .remember{
+    color: white;
+    }
+    
+    .remember input
+    {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+    }
+    .button{
+        background-color: #8b0000;
+    }
+    .btn_login{
+       
+        
+        color: white;
+        font-weight: bold;
+        background-color: #941e41;
+        }
+        
+        .btn_login:hover{
+        color: black;
+        background-color: white;
+        }
+        
+        .links{
+            text-align: center;
+        color: white;
+        }
+        
+        .links a{
+            text-align: center;
+        margin-left: 4px;
+        }

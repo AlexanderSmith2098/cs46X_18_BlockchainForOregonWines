@@ -1,4 +1,6 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style11.css">
+
 <form action="/register" method="POST" class="validated-form" novalidate>
 	<body>
 		<div class="container">
@@ -15,16 +17,17 @@
 								<input type="text" class="form-control" placeholder="User Name" name="username">
 								
 							</div>
-                            <div class="input-group form-group">
-								<div class="input-group-prepend">
-								</div>
-								<input type="email" class="form-control" placeholder="Email" name="email">
-							</div>
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 								</div>
 								<input type="password" class="form-control" placeholder="Password" name="password">
 							</div>
+                            <div class="input-group form-group">
+								<div class="input-group-prepend">
+								</div>
+								<input type="email" class="form-control" placeholder="Email" name="email">
+							</div>
+							
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
 								</div>
@@ -67,7 +70,7 @@
 								<input type="text" class="form-control" placeholder="Phone Number" name="phone">
 								
 							</div>
-							<button type="submit" class="btn btn-primary">Register</button>
+							<button type="submit" class="btn float-right btn_login">Register</button>
 						</form>
                         <p>Already have an account? <a href="/login">Login here.</a></p>
 				</div>
