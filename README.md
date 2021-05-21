@@ -1,6 +1,8 @@
 # cs46X_18_BlockchainForOregonWines
 Setup:
 
+NOTE: You need to have Docker installed on your system in order to run the docker-compose.yaml file.
+
 Make sure you're in the root of the directory of the project and type in:
 docker-compose up --build -d
 This creates containers for a single node, the transaction processor, and a mongodb.
@@ -12,6 +14,8 @@ nodemon -L index.js
 If you want to work on the customer client, comment out the "client2" chunk of code in the docker-compose.yaml file.  Then run the docker-compose file as written above.
 You'll have to start the customer client manually if you do that.  Navigate to the custClient folder and type in:
 nodemon -L index.js
+
+NOTE: Running either of the clients outside of Docker is ... really complicated and requires a fair amount of setup.  The Sawtooth-sdk module has a lot of dependencies, and requires a fairly specific environment.  Detailing how to do this is beyond the scope of this readme (since it changes so much depending on the user's OS and such).
 
 When you are finished coding/developing/whatever, simply type docker-down (it doesn't matter where your terminal is currently at).
 
