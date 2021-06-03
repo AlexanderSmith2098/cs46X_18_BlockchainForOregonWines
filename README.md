@@ -4,7 +4,9 @@ Setup:
 NOTE: You need to have Docker installed on your system in order to run the docker-compose.yaml file.
 
 Make sure you're in the root of the directory of the project and type in:
+
 docker-compose up --build -d
+
 This creates containers for a single node, the transaction processor, and a mongodb.
 
 If you want to work on the winery client, comment out the "client1" chunk of code in the docker-compose.yaml file.  Then run the docker-compose file as written above.
