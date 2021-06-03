@@ -11,6 +11,7 @@ This creates containers for a single node, the transaction processor, and a mong
 
 If you want to work on the winery client, comment out the "client1" chunk of code in the docker-compose.yaml file.  Then run the docker-compose file as written above.
 You'll have to start the winery client manually if you do that.  Navigate to the client folder and type in:
+
 nodemon -L index.js
 
 If you want to work on the customer client, comment out the "client2" chunk of code in the docker-compose.yaml file.  Then run the docker-compose file as written above.
